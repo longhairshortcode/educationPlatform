@@ -1,0 +1,45 @@
+.navContainer{
+    display: flex;
+    justify-content: space-between;
+    border: 2px solid red;
+    padding: 0px 200px;
+}
+
+.leftLogoAndLinksContainer{
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    border: 2px solid black;
+    width: 50%;
+    align-items: center;
+    width: fit-content;
+}
+
+.threeDDContainers{
+    display: flex;
+    gap: 30px;
+    justify-content: space-between;
+    border: 2px solid greenyellow;
+    width: fit-content;
+}
+
+.righttLoginAndBuyContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 50%;
+    border: 2px solid hotpink;
+    width: fit-content;
+}
+
+.buyButton{
+    border: 2px solid orangered;
+    border-radius: 2px;
+    height: 20px;
+    color: white;
+    padding: 7.5px;
+    background-color: orangered;
+
+}
+

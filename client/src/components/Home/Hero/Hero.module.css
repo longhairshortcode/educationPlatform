@@ -1,0 +1,22 @@
+.componentContainer{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(37, 115, 102);
+    border: 4px yellow solid;
+    height: 410px;
+    max-height: 40%;
+    width: 100vw;
+}
+
+.leftAndRightContainer{
+    display: flex;
+    border: 2px lightblue solid;
+}
+
+.leftContainer{
+    width: 50%;
+}
+
+.rightImageContainer{
+    width: 50%;
+}
