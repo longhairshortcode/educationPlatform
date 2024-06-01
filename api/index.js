@@ -1,25 +1,37 @@
 //IMPORTS
 import express from "express"
-import mongoose from "mongoose"
+// import connectDB from "./config/db.js"
+import connection from './config/connectSQLDB.js';  
 import dotenv from "dotenv"
+import router from "./routes/auth.route.js"
 
-//INITIALIZE MY EXPRESS APP?
+//INITIALIZE MY EXPRESS APP
 const app = express()
 
-//CONFIGS?
+//CONFIGS
 dotenv.config()
 
-//CONNECT DB?
-mongoose.connect(process.env.MONGO_URL).then(()=>{
-    console.log("Database is connected")
-})
-.catch((e)=>{
-    console.log("DB did not connect")
-})
+//CALLING ROUTE FILES
+app.use(router)
 
-//LISTEN FOR INCOMMING REQUEST?
+//CONNECT DB (will be in seperate file, will be in config folder)
+
+
+//LISTEN FOR INCOMING REQUEST (OPEN PORT to listen to incoming request)
 app.listen(5000, ()=>{
+    // connectDB();
+    connection.query('SELECT 1 + 1 AS solution', (err, rows, fields) => {
+        if (err) throw err;
+      
+        console.log('The solution is: ', rows[0].solution);
+      });
+      
+      connection.end();
     console.log("Server is running on 5000")
 }) 
+
+
+//HANDLE FILE PATHS (PICS)
+
 
 
