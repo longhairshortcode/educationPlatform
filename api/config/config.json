@@ -1,0 +1,23 @@
+{
+  "development": {
+    "username": "root",
+    "password": "SQLhw24!",
+    "database": "educationplatform",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "test": {
+    "username": "root",
+    "password": "SQLhw24!",
+    "database": "educationplatform_test",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  },
+  "production": {
+    "username": "root",
+    "password": "SQLhw24!",
+    "database": "educationplatform_production",
+    "host": "127.0.0.1",
+    "dialect": "mysql"
+  }
+}
