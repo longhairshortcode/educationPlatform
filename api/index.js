@@ -1,33 +1,4 @@
-  //WITH SEQUALIZE
-// IMPORTS
-// import express from "express";
-// import dotenv from "dotenv";
-// import router from "./routes/auth.route.js";
-// import { initializeDatabase } from "./config/database.js"; 
 
-// INITIALIZE MY EXPRESS APP
-// const app = express();
-
-// CONFIGS
-// dotenv.config();
-
-// CALLING ROUTE FILES
-// app.use(router);
-
-// LISTEN FOR INCOMING REQUESTS (OPEN PORT to listen to incoming requests)
-// app.listen(5000, () => {
-  // CALL THE FUNCTION FOR DB SETUP? HOW TO WORD THIS?
-//     initializeDatabase();
-//     console.log("Server is running on port 5000");
-// });
-
-
-
-
-
-
-
-  //WITHOUT SEQUALIZE
 //IMPORTS
 import express from "express"
 // import connectDB from "./config/db.js"
