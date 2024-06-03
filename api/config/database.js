@@ -1,21 +1,25 @@
-
+// Import mysql to be able to use it here
 import mysql from 'mysql2';
+import dotenv from "dotenv"
 
-const connection = mysql.createConnection({
-  host: 'localhost',  // Use 'localhost' or the appropriate hostname, not the port number
-  user: 'root',
-  password: 'SQLhw24!',
-  database: 'educationplatform'
+dotenv.config()
+
+//how to connect to mysql db
+export const connection = mysql.createConnection({
+  host: process.env.HOST,
+  user: process.env.ROOT,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE
 });
 
-// // Connect to the database
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to the database:', err.stack);
-    return;
-  }
-  console.log('Connected to the database as id ' + connection.threadId);
-});
+//sql syntax to addUser query
+export async function addUserQuery(name, lastname) {
+  const [res] = await connection.query("insert into user ("names","lastname") values (?);", [name, lastname])
+  return [res] 
+}
 
-// // Export the connection
-export default connection;
+//sql syntax to getUser query
+export async function getUserQuery(name){
+  const [res] = await connection.query("select * from user where (name == ?)", [name])
+  return [res]
+}

@@ -2,7 +2,7 @@
 //IMPORTS
 import express from "express"
 // import connectDB from "./config/db.js"
-import connection from './config/database.js';  
+import {connection} from './config/database.js';  
 import dotenv from "dotenv"
 import router from "./routes/auth.route.js"
 
@@ -11,6 +11,15 @@ const app = express()
 
 //CONFIGS
 dotenv.config()
+// // Connect to the database
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to the database:', err.stack);
+    return;
+  }
+  console.log('Connected to the database as id ' + connection.threadId);
+});
+
 
 //CALLING ROUTE FILES
 app.use(router)
@@ -21,13 +30,7 @@ app.use(router)
 //LISTEN FOR INCOMING REQUEST (OPEN PORT to listen to incoming request)
 app.listen(5000, ()=>{
     // connectDB();
-    connection.query('SELECT 1 + 1 AS solution', (err, rows, fields) => {
-        if (err) throw err;
-      
-        console.log('The solution is: ', rows[0].solution);
-      });
-      
-      connection.end();
+   
     console.log("Server is running on 5000")
 }) 
 
