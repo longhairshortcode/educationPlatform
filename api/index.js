@@ -8,6 +8,7 @@ import router from "./routes/auth.route.js"
 
 //INITIALIZE MY EXPRESS APP
 const app = express()
+app.use(express.json())
 
 //CONFIGS
 dotenv.config()
@@ -15,6 +16,7 @@ dotenv.config()
 connection.connect((err) => {
   if (err) {
     console.error('Error connecting to the database:', err.stack);
+    console.error('This is an Error connecting to the database:', err.message);
     return;
   }
   console.log('Connected to the database as id ' + connection.threadId);
