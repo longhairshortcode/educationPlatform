@@ -8,10 +8,12 @@ import router from "./routes/auth.route.js"
 
 //INITIALIZE MY EXPRESS APP
 const app = express()
-app.use(express.json())
+//Json Parsing Middleware
+app.use(express.json()); // Middleware to parse JSON payloads
 
 //CONFIGS
 dotenv.config()
+
 // // Connect to the database
 connection.connect((err) => {
   if (err) {
@@ -23,8 +25,8 @@ connection.connect((err) => {
 });
 
 
-//CALLING ROUTE FILES
-app.use(router)
+// ROUTE CONFIGURATION
+app.use(router); // Router middleware using the imported router
 
 //CONNECT DB (will be in seperate file, will be in config folder)
 
