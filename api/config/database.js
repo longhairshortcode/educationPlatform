@@ -1,8 +1,8 @@
 // Import mysql to be able to use it here
 import mysql from 'mysql2';
-// import dotenv from "dotenv"
+import dotenv from "dotenv"
 
-// dotenv.config()
+dotenv.config()
 
 //how to connect to mysql db
 export const connection = mysql.createConnection({
