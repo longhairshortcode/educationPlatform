@@ -2,7 +2,6 @@
 //IMPORTS
 import express from "express"
 // import connectDB from "./config/db.js"
-import {connection} from './config/database.js';  
 import dotenv from "dotenv"
 import router from "./routes/auth.route.js"
 
@@ -15,14 +14,6 @@ app.use(express.json()); // Middleware to parse JSON payloads
 dotenv.config()
 
 // // Connect to the database
-connection.connect((err) => {
-  if (err) {
-    console.error('Error connecting to the database:', err.stack);
-    console.error('This is an Error connecting to the database:', err.message);
-    return;
-  }
-  console.log('Connected to the database as id ' + connection.threadId);
-});
 
 
 // ROUTE CONFIGURATION
