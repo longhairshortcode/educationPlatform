@@ -6,10 +6,10 @@ dotenv.config()
 
 //how to connect to mysql db
 export const connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "SQLhw24!",
-  database: "educationplatform"
+  host: process.env.HOST,
+  user: process.env.ROOT,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE
 });
 
 //sql syntax to addUser query
