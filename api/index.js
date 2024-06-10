@@ -4,6 +4,8 @@ import express from "express"
 // import connectDB from "./config/db.js"
 import dotenv from "dotenv"
 import router from "./routes/auth.route.js"
+import morgan from "morgan"
+import bodyParser from "body-parser"
 
 //INITIALIZE MY EXPRESS APP
 const app = express()
@@ -12,7 +14,9 @@ app.use(express.json()); // Middleware to parse JSON payloads
 
 //CONFIGS
 dotenv.config()
-
+app.use(morgan('dev'))
+app.use(bodyParser.json()); // Parse JSON bodies
+app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 // // Connect to the database
 
 

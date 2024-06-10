@@ -46,54 +46,60 @@
 // };
 
 
-
+//So no async await why?
 // without using async await
 import bcrypt from 'bcrypt';
 import pool from '../config/database.js';
 import dotenv from 'dotenv';
+import jwt from 'jsonwebtoken'
 
 dotenv.config();
 
-export const signUp = (req, res) => {
+export const signUp = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
 
+  //check if all areas filled (more security than doing in the FE)
   if (!firstName || !lastName || !email || !password) {
-    return res.status(400).json({ message: 'All fields are required' });
+      return res.status(400).json({ message: 'All fields are required' });
+    }
+
+  //connect to db, use that connection to check if email already exists, if it does via length > 0, send already exists message
+  //if doesn't exists, hash pw, then try/catch to create/save new user in db
+  //
+  try{
+      const connection = await pool.getConnection()
+      //check if user already exists 
+    const resultEmail = await connection.query('SELECT email FROM user WHERE email = ?', [email])
+
+      if (resultEmail[0].length > 0) {
+        return res.status(409).json({ message: 'User already exists' });
+      
   }
 
-  pool.query('SELECT * FROM user WHERE email = ?', [email], (err, results) => {
-    if (err) {
-      console.error('Error during email check:', err.message);
-      return res.status(500).json({ message: 'Internal server error' });
-    }
-
-    if (results.length > 0) {
-      return res.status(409).json({ message: 'User already exists' });
-    }
-
-    bcrypt.hash(password, 10, (err, hashedPassword) => {
-      if (err) {
-        console.error('Error during password hashing:', err.message);
-        return res.status(500).json({ message: 'Internal server error' });
-      }
-
-      pool.query(
-        'INSERT INTO user (firstName, lastName, email, userPassword) VALUES (?, ?, ?, ?)',
-        [firstName, lastName, email, hashedPassword],
-        (err, results) => {
-          if (err) {
-            console.error('Error during user creation:', err.message);
-            return res.status(500).json({ message: 'Internal server error' });
-          }
-
-          res.status(201).json({ message: 'User was created successfully' });
-        }
-      );
+const hashedpassword = await bcrypt.hash(password, 10)
+//as mentoined above, if hashing complete, connect to db and create new user
+  try{
+        const resultNewUser = await connection.query('INSERT INTO user (firstName, lastName, email, userPassword) VALUES (?, ?, ?, ?)',
+            [firstName, lastName, email, hashedpassword])            
+      
+                    // Set a secure, HTTP-only cookie ????????????
+  const token = jwt.sign({email}, process.env.JWT_KEY)  
+  res.cookie('token', token, {
+      httpOnly: true,
     });
-  });
+    console.log(token)
+
+    res.status(201).json({ message: 'User was created successfully' }); 
+   }catch(err){
+        console.log(err)
+    }
+            
+ }catch(err){
+}
 };
 
 
+//QQQQQ  QQQQ QQ try /catch w async await and no promises?
 // PRO Level 
 // import bcrypt from 'bcrypt';
 // import pool from '../config/database.js';
@@ -132,12 +138,16 @@ export const signUp = (req, res) => {
 //     const hashedPassword = await bcrypt.hash(password, 10);
 
 //     // Insert new user into the database
-//     await query(
-//       'INSERT INTO user (firstName, lastName, email, userPassword) VALUES (?, ?, ?, ?)',
+//     try{
+//     const resultNewUser = await query('INSERT INTO user (firstName, lastName, email, userPassword) VALUES (?, ?, ?, ?)',
 //       [firstName, lastName, email, hashedPassword]
 //     );
+//      }catch(err){
+            // console.log(err)
+//       }
 
-//     // Set a secure, HTTP-only cookie
+
+//     // Set a secure, HTTP-only cookie ????????????
 //     res.cookie('token', 'yourGeneratedToken', {
 //       httpOnly: true,
 //       secure: process.env.NODE_ENV === 'production', // Only set secure flag in production
