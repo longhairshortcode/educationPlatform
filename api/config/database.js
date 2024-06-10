@@ -1,10 +1,10 @@
 import mysql from 'mysql2';
 
  const pool = mysql.createPool({
-  host: "localhost",
-  user: "root",
-  password: "THISisOUSSAMA12/*",
-  database: "newTest"
+  host: "127.0.0.1",
+  user: "lhsc",
+  password: "Pleasework24!",
+  database: "educationplatform"
 })
 
 export default pool 
