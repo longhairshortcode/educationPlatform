@@ -55,14 +55,43 @@ import jwt from 'jsonwebtoken'
 
 dotenv.config();
 
+
+export const login = async (req, res) => {
+  const {email, password} = req.body
+  if (!email || !password) {
+    return res.status(400).json({ message: 'Both fields are required' });
+  }
+  try{
+    const connection = await pool.getConnection()
+    const resultEmail = await connection.query('SELECT *  FROM user WHERE email = ?', [email])
+    if (resultEmail[0].length == 0) {
+      return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 
+  }
+  const user = resultEmail[0]
+  console.log("Here is the user: ", user)
+  console.log("Here is the user password: ", user[0].userPassword)
+  const hashedpassword = await bcrypt.compare(password, user[0].userPassword)
+  if (!hashedpassword){
+    return res.status(500).json({
+      message: "Password is incorrect, please try again."
+    })
+  }
+  const token = jwt.sign({email}, process.env.JWT_KEY)  
+  res.cookie('token', token, {
+      httpOnly: true,
+    });
+    res.status(201).json({ message: 'User logged in successfully' });
+}catch(err){
+  console.log(err)
+}
+}
+
 export const signUp = async (req, res) => {
   const { firstName, lastName, email, password } = req.body;
-
   //check if all areas filled (more security than doing in the FE)
   if (!firstName || !lastName || !email || !password) {
       return res.status(400).json({ message: 'All fields are required' });
     }
-
   //connect to db, use that connection to check if email already exists, if it does via length > 0, send already exists message
   //if doesn't exists, hash pw, then try/catch to create/save new user in db
   //
@@ -97,6 +126,13 @@ const hashedpassword = await bcrypt.hash(password, 10)
  }catch(err){
 }
 };
+
+  export const logOut = async (req, res) => {
+    res.clearCookie('token', {
+      httpOnly: true,
+    });
+    res.status(200).json({ message: 'User logged out successfully' });
+  };
 
 
 //QQQQQ  QQQQ QQ try /catch w async await and no promises?
