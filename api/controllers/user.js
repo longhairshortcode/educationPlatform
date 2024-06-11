@@ -86,7 +86,7 @@ export const login = async (req, res) => {
 }
 }
 
-export const signUp = async (req, res) => {
+export const signUp = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
   //check if all areas filled (more security than doing in the FE)
   if (!firstName || !lastName || !email || !password) {
@@ -124,6 +124,7 @@ const hashedpassword = await bcrypt.hash(password, 10)
     }
             
  }catch(err){
+  next()
 }
 };
 
