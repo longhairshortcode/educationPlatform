@@ -46,8 +46,8 @@
 // };
 
 
-//So no async await why?
-// without using async await
+
+
 import bcrypt from 'bcrypt';
 import pool from '../config/database.js';
 import dotenv from 'dotenv';
@@ -56,36 +56,86 @@ import jwt from 'jsonwebtoken'
 dotenv.config();
 
 
+
+
 export const login = async (req, res) => {
   const {email, password} = req.body
+  
   if (!email || !password) {
     return res.status(400).json({ message: 'Both fields are required' });
   }
+  
   try{
     const connection = await pool.getConnection()
     const resultEmail = await connection.query('SELECT *  FROM user WHERE email = ?', [email])
+    
     if (resultEmail[0].length == 0) {
       return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 
   }
   const user = resultEmail[0]
   console.log("Here is the user: ", user)
   console.log("Here is the user password: ", user[0].userPassword)
-  const hashedpassword = await bcrypt.compare(password, user[0].userPassword)
-  if (!hashedpassword){
-    return res.status(500).json({
+  
+  const isPasswordCorrect = await bcrypt.compare(password, user[0].userPassword)
+  
+  if (!isPasswordCorrect){
+    return res.status(401).json({
       message: "Password is incorrect, please try again."
     })
   }
   const token = jwt.sign({email}, process.env.JWT_KEY)  
+  
   res.cookie('token', token, {
       httpOnly: true,
     });
-    res.status(201).json({ message: 'User logged in successfully' });
+
+    //QQQQQQQQQQQQQQQQchat says this to end instead of current below:
+//     return res.status(200).json({ message: 'User logged in successfully' });
+//   } finally {
+//     connection.release(); // Ensure the connection is released back to the pool
+//   }
+// } catch (err) {
+//   console.error(err);
+//   return res.status(500).json({ message: 'Internal Server Error' });
+// }
+// };
+
+//QQQQQQQQQQQQQor this way if don't want' finally block, can do this instead of current below, which is best out of 3?
+//thought original 
+// connection.release();
+// return res.status(200).json({ message: 'User logged in successfully' });
+// } catch (err) {
+// if (connection) connection.release();
+// console.error(err);
+// return res.status(500).json({ message: 'Internal Server Error' });
+// }
+// };
+
+//3rd way?
+// return res.status(200).json({ message: 'User logged in successfully' });
+// } catch (err) {
+//   console.error(err);
+//   return res.status(500).json({ message: 'Internal Server Error' });
+// } finally {
+//   if (connection) connection.release();
+// }
+// };
+
+    res.status(200).json({ message: 'User logged in successfully' });
 }catch(err){
-  console.log(err)
+  //QQQQ added this per chathpt, ok?
+  console.error(err)
+  return res.status(500).json({ message: 'Internal Server Error' });
 }
 }
 
+
+
+
+
+// for signup, using async await since promisfy pool (connection) in database file, so no promises here 
+//and added try/catch 
+//QQQQ what does next() at the end do, why no sending message / console log?
 export const signUp = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
   //check if all areas filled (more security than doing in the FE)
@@ -104,14 +154,13 @@ export const signUp = async (req, res, next) => {
         return res.status(409).json({ message: 'User already exists' });
       
   }
-
 const hashedpassword = await bcrypt.hash(password, 10)
 //as mentoined above, if hashing complete, connect to db and create new user
   try{
         const resultNewUser = await connection.query('INSERT INTO user (firstName, lastName, email, userPassword) VALUES (?, ?, ?, ?)',
             [firstName, lastName, email, hashedpassword])            
       
-                    // Set a secure, HTTP-only cookie ????????????
+                    // Set a secure, HTTP-only cookie 
   const token = jwt.sign({email}, process.env.JWT_KEY)  
   res.cookie('token', token, {
       httpOnly: true,
@@ -128,6 +177,11 @@ const hashedpassword = await bcrypt.hash(password, 10)
 }
 };
 
+
+
+
+
+
   export const logOut = async (req, res) => {
     res.clearCookie('token', {
       httpOnly: true,
@@ -136,7 +190,14 @@ const hashedpassword = await bcrypt.hash(password, 10)
   };
 
 
-//QQQQQ  QQQQ QQ try /catch w async await and no promises?
+
+
+
+
+
+
+
+//try /catch w async await and no promises like first example 
 // PRO Level 
 // import bcrypt from 'bcrypt';
 // import pool from '../config/database.js';

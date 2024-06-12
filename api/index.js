@@ -11,35 +11,40 @@ import bodyParser from "body-parser"
 import cors from "cors"
 //makes the request sizes smaller
 import compression from "compression"
-//another security like cors, research more
+//another security like cors, research more - has to do with instructing the browsers on how to handle side securly, adds 
+//extra lalayer of protection against various types of web-attacks
 import helmet from "helmet"
 //security so that user has a limit on incorrect passwords and other requests
 import rateLimit from "express-rate-limit"
 
-// IMPORTS (FILES )
-//import connectDB from "./config/db.js"
+// IMPORTS (FILES ) 
+//import connectDB from "./config/db.js" -- maybe import db here too like mongo, optional SQL
 import router from "./routes/auth.route.js"
-import {handleError} from "./utils/handleError.js"
+import {handleError} from "./middlewares/handleError.js"
 
 //INITIALIZE MY EXPRESS APP
 const app = express()
 
-// Rate limiting to prevent abuse
+// QQQQ why tis here?  Rate limiting to prevent abuse
 const limiter = rateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100, // limit each IP to 100 requests per windowMs
     message: 'Too many requests from this IP, please try again after 15 minutes'
 });
 
-//CONFIGS
+//similar to above, will do a cors one
+
+//CONFIGS features imported from online to be used in the whole project, aka using the things that you
+//imported
 dotenv.config()
 app.use(limiter)
 app.use(morgan('dev'))
 app.use(compression())
 app.use(helmet())
 app.use(cors()) 
+
 //Json Parsing Middleware
-app.use(express.json()); // Middleware to parse JSON payloads
+app.use(express.json()); // Middleware to parse JSON payloads, understand any json
 app.use(bodyParser.json()); // Parse JSON bodies
 app.use(bodyParser.urlencoded({ extended: true })); // Parse URL-encoded bodies
 // // Connect to the database
@@ -55,7 +60,8 @@ res.status(404).json({
     message: "Path not found"
 })
 }) 
-//CONNECT DB (will be in seperate file, will be in config folder)
+//CONNECT DB (will be in seperate file, will be in config folder), right now only connect to db when
+//make a query
 
 
 //LISTEN FOR INCOMING REQUEST (OPEN PORT to listen to incoming request)
