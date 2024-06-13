@@ -1,4 +1,4 @@
-// using async await buy utils
+// WAY 1 using async await buy utils
 // import bcrypt from 'bcrypt';
 // import pool from '../config/database.js'; 
 // import dotenv from 'dotenv';
@@ -47,7 +47,7 @@
 
 
 
-
+//Way 2
 import bcrypt from 'bcrypt';
 import pool from '../config/database.js';
 import dotenv from 'dotenv';
