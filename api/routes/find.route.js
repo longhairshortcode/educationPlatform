@@ -1,4 +1,5 @@
 import express from "express"
+import { searchAllTutors, filterTutorsByClass, filterTutorsByGrade, filterTutorsBySubject, filterTutorsByRate } from "../controllers/auth.controller";
 const router = express.Router();
 
 router.get('/search-all-tutors', searchAllTutors)
