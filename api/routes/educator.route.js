@@ -1,5 +1,5 @@
 import express from "express"
-import {createEducatorProfile, editEducatorProfile, getEducatorProfile  }
+import {createEducatorProfile, editEducatorProfile, getEducatorProfile}
 const router = express.Router();
 
 router.post('/create-profile', createEducatorProfile)

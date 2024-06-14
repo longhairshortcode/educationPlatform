@@ -1,4 +1,5 @@
 import express from "express"
+import { createParentProfile, editParentProfile, getParentProfile } from "../controllers/parent.controller";
 const router = express.Router();
 
 router.post('/create-profile', createParentProfile)
