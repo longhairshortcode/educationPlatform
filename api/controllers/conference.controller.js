@@ -1,8 +1,11 @@
-const startConference = async (req, res, next) => {
+class Conference {
+static async startConference (req, res, next) {
     
 } 
-const endConference = async (req, res, next) => {
+static  async endConference (req, res, next)  {
 
 } 
+}
 
-export default conference; 
+
+export default Conference; 

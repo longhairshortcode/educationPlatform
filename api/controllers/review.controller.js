@@ -1,8 +1,14 @@
-const addReview = async (req, res, next) => {
+class Review{
+    static async addReview (req, res, next){
     
-} 
-const editReview = async (req, res, next) => {
+    } 
+    static async editReview  (req, res, next)  {
+    
+    } 
+    static async getReviews  (req, res, next)  {
+    
+    } 
 
-} 
+}
  
-export default review
+export default Review

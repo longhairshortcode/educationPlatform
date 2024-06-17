@@ -1,14 +1,14 @@
-import auth from "./auth.controller.js"
-import parent from "./parent.controller.js" 
-import educator from "./educator.controller.js" 
-import review from "./review.controller.js" 
-import message from "./message.controller.js" 
-import find from "./find.controller.js" 
-import conference from "./conference.controller.js" 
+import Auth from "./auth.controller.js"
+import Parent from "./parent.controller.js" 
+import Educator from "./educator.controller.js" 
+import Review from "./review.controller.js" 
+import Message from "./message.controller.js" 
+import Find from "./find.controller.js" 
+import Conference from "./conference.controller.js" 
 
 
 
 
 export {
-    auth, parent, educator, review, message, find, conference
+    Auth, Parent, Educator, Review, Message, Find, Conference
 }

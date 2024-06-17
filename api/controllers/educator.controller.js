@@ -1,11 +1,13 @@
-const createEducatorProfile = async (req, res, next) => {
+class Educator {
+    static async createEducatorProfile  (req, res, next)  {
     
-} 
-const editEducatorProfile = async (req, res, next) => {
-
-} 
-const getEducatorProfile = async (req, res, next) => {
-
+    } 
+    static async editEducatorProfile  (req, res, next)  {
+    
+    } 
+    static async getEducatorProfile  (req, res, next)  {
+    
+    }
 }
 
-export default educator
+export default Educator

@@ -1,8 +1,10 @@
-const sendMessage = async (req, res, next) => {
+class Message {
+    static async sendMessage  (req, res, next)  {
     
-} 
-const getMessage = async (req, res, next) => {
+    } 
+    static async getMessage  (req, res, next)  {
+    
+    } 
+}
 
-} 
-
-export default message
+export default Message

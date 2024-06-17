@@ -1,11 +1,13 @@
- const createParentProfile = async (req, res, next) => {
+class Parent{
+    static async createParentProfile  (req, res, next)  {
     
-} 
-const editParentProfile = async (req, res, next) => {
-
-} 
-const getParentProfile = async (req, res, next) => {
-
+    } 
+    static async editParentProfile  (req, res, next)  {
+    
+    } 
+    static async getParentProfile  (req, res, next)  {
+    
+    }
 }
 
-export default parent
+export default Parent

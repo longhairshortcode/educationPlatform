@@ -1,17 +1,20 @@
- const searchTutors = async (req, res, next) => {
+class Find{
+
+    static async searchAllTutors  (req, res, next)  {
     
-} 
- const filterTutorByRate  = async (req, res, next) => {
-
-} 
- const filterTutorBySubject = async (req, res, next) => {
-
+    } 
+     static async filterTutorsByRate   (req, res, next)  {
+    
+    } 
+     static async filterTutorsBySubject  (req, res, next)  {
+    
+    }
+     static async lterTutorsByClass (req, res, next)  {
+    
+    }
+    static async lterTutorsByGrade  (req, res, next)  {
+    
+    }
 }
- const filterTutorByClass= async (req, res, next) => {
 
-}
-const filterTutorByGrade = async (req, res, next) => {
-
-}
-
-export default find
+export default Find
