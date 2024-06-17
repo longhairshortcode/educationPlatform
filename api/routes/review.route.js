@@ -1,11 +1,10 @@
 import express from "express"
-import {leaveReview, editReview, deleteReview, getReviews}
+import {review} from "../controller/controllerCenter.js"
 const router = express.Router();
 
-router.post('/leave-review', leaveReview)
-router.put('/edit-review', editReview)
-router.delete('/delete-review', deleteReview)
-//QQQ  below good here?
-router.get('/reviews/:tutorId', getReviews)
+router.post('/leave-review', review.leaveReview)
+router.put('/edit-review', review.editReview)
+router.delete('/delete-review', review.deleteReview)
+router.get('/:tutorId', review.getReviews)
 
 export default router

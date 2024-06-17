@@ -1,12 +1,12 @@
 import express from "express"
-import { searchAllTutors, filterTutorsByClass, filterTutorsByGrade, filterTutorsBySubject, filterTutorsByRate } from "../controllers/auth.controller";
+import {find} from "../controller/controllerCenter.js"
 const router = express.Router();
 
-router.get('/search-all-tutors', searchAllTutors)
- router.get('/filter-by-rate', filterTutorsByRate)
- router.get('/filter-by-subject', filterTutorsBySubject)
- router.get('/filter-by-class', filterTutorsByClass)
- router.get('/filter-by-grade', filterTutorsByGrade)
+router.get('/search-all-tutors', find.searchAllTutors)
+ router.get('/filter-by-rate', find.filterTutorsByRate)
+ router.get('/filter-by-subject', find.filterTutorsBySubject)
+ router.get('/filter-by-class', find.lterTutorsByClass)
+ router.get('/filter-by-grade', find.lterTutorsByGrade)
 
 
 export default router

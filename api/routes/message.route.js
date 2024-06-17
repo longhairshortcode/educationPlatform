@@ -1,10 +1,9 @@
 import express from "express"
-import { sendMessage, getMessage } from "../controllers/message.controller";
+import {message} from "../controller/controllerCenter.js"
 const router = express.Router();
 
-router.post('/send-message', sendMessage)
-//QQQQQQ this should be message singluar not plural right?
-router.get('/get-message', getMessage)
+router.post('/send-message', message.sendMessage)
+router.get('/get-messages', message.getMessage)
 
 
 export default router

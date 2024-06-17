@@ -1,10 +1,10 @@
 import express from "express"
-import { createParentProfile, editParentProfile, getParentProfile } from "../controllers/parent.controller";
+import {parent} from "../controller/controllerCenter.js"
 const router = express.Router();
 
-router.post('/create-profile', createParentProfile)
-router.put('/edit-profile', editParentProfile)
-router.get('/profile/:tutorId', getParentProfile)
+router.post('/create-profile', parent.createParentProfile)
+router.put('/edit-profile', parent.editParentProfile)
+router.get('/profile/:tutorId', parent.getParentProfile)
 // router.post('/upload-image',  uploadParentImage)
 // router.delete('/delete-image',  deleteParentImage)
 

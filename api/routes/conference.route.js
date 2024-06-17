@@ -1,9 +1,9 @@
 import express from "express"
-import { startConference, endConference } from "../controllers/conference.controller";
+import {conference} from "../controller/controllerCenter.js"
 const router = express.Router();
 
-router.post('/start-conference', startConference)
-router.post('/end-conference', endConference)
+router.post('/start-conference', conference.startConference)
+router.post('/end-conference', conference.endConference)
 
 
 export default router
