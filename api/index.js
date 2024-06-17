@@ -19,7 +19,7 @@ import rateLimit from "express-rate-limit"
 
 // IMPORTS (FILES ) 
 //import connectDB from "./config/db.js" -- maybe import db here too like mongo, optional SQL
-import router from "./routes/auth.route.js"
+import router from "./routes/routesCenter.js"
 import {handleError} from "./utils/handleError.js"
 
 //INITIALIZE MY EXPRESS APP
