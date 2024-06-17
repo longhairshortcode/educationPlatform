@@ -1,5 +1,5 @@
 import express from "express"
-import {conference} from "../controller/controllerCenter.js"
+import {conference} from "../controllers/controllerCenter.js"
 const router = express.Router();
 
 router.post('/start-conference', conference.startConference)

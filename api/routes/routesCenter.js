@@ -1,11 +1,11 @@
 import express from "express"
-import auth from "auth.route.js"
-import parent from "parent.route.js" 
-import educator from "educator.route.js" 
-import review from "review.route.js" 
-import message from "message.route.js" 
-import find from "find.route.js" 
-import conference from "conference.route.js" 
+import auth from "./auth.route.js"
+import parent from "./parent.route.js" 
+import educator from "./educator.route.js" 
+import review from "./review.route.js" 
+import message from "./message.route.js" 
+import find from "./find.route.js" 
+import conference from "./conference.route.js" 
 
 const router = express.Router();
 

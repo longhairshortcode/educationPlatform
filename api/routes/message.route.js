@@ -1,5 +1,5 @@
 import express from "express"
-import {message} from "../controller/controllerCenter.js"
+import {message} from "../controllers/controllerCenter.js"
 const router = express.Router();
 
 router.post('/send-message', message.sendMessage)

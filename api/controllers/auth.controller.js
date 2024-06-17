@@ -1,52 +1,3 @@
-// WAY 1 using async await buy utils
-// import bcrypt from 'bcrypt';
-// import pool from '../config/database.js'; 
-// import dotenv from 'dotenv';
-
-
-// import { promisify } from 'util';
-
-// dotenv.config();
-
-// //The promisify function is a utility provided by Node.js as part of the util module.
-// // It converts callback-based functions into Promise-based ones, making it 
-// //easier to use modern JavaScript's async/await syntax for asynchronous operations.
-// const query = promisify(pool.query).bind(pool);
-
-// export const signUp = async (req, res) => {
-//   const { firstName, lastName, email, password } = req.body;
-
-//   try {
-//     // Validate request data
-//     if (!firstName || !lastName || !email || !password) {
-//       return res.status(400).json({ message: 'All fields are required' });
-//     }
-
-//     // Check if user already exists
-//     const existingUser = await query('SELECT * FROM user WHERE email = ?', [email]);
-//     if (existingUser.length > 0) {
-//       return res.status(409).json({ message: 'User already exists' });
-//     }
-
-//     // Hash password
-//     const hashedPassword = await bcrypt.hash(password, 10);
-
-//     // Insert new user into database
-//     await query(
-//       'INSERT INTO user (firstName, lastName, email, userPassword) VALUES (?, ?, ?, ?)',
-//       [firstName, lastName, email, hashedPassword]
-//     );
-
-//     // Respond with success message
-//     res.status(201).json({ message: 'User was created successfully' });
-//   } catch (err) {
-//     console.error('Error during sign up:', err.message);
-//     res.status(500).json({ message: 'Internal server error' });
-//   }
-// };
-
-
-
 //Way 2
 import bcrypt from 'bcrypt';
 import pool from '../config/database.js';
@@ -55,10 +6,7 @@ import jwt from 'jsonwebtoken'
 
 dotenv.config();
 
-
-
-
-export const login = async (req, res) => {
+const login = async (req, res) => {
   const {email, password} = req.body
   
   if (!email || !password) {
@@ -88,42 +36,8 @@ export const login = async (req, res) => {
   res.cookie('token', token, {
       httpOnly: true,
     });
-
-    //QQQQQQQQQQQQQQQQchat says this to end instead of current below:
-//     return res.status(200).json({ message: 'User logged in successfully' });
-//   } finally {
-//     connection.release(); // Ensure the connection is released back to the pool
-//   }
-// } catch (err) {
-//   console.error(err);
-//   return res.status(500).json({ message: 'Internal Server Error' });
-// }
-// };
-
-//QQQQQQQQQQQQQor this way if don't want' finally block, can do this instead of current below, which is best out of 3?
-//thought original 
-// connection.release();
-// return res.status(200).json({ message: 'User logged in successfully' });
-// } catch (err) {
-// if (connection) connection.release();
-// console.error(err);
-// return res.status(500).json({ message: 'Internal Server Error' });
-// }
-// };
-
-//3rd way?
-// return res.status(200).json({ message: 'User logged in successfully' });
-// } catch (err) {
-//   console.error(err);
-//   return res.status(500).json({ message: 'Internal Server Error' });
-// } finally {
-//   if (connection) connection.release();
-// }
-// };
-
     res.status(200).json({ message: 'User logged in successfully' });
 }catch(err){
-  //QQQQ added this per chathpt, ok?
   console.error(err)
   return res.status(500).json({ message: 'Internal Server Error' });
 }
@@ -136,7 +50,7 @@ export const login = async (req, res) => {
 // for signup, using async await since promisfy pool (connection) in database file, so no promises here 
 //and added try/catch 
 //QQQQ what does next() at the end do, why no sending message / console log?
-export const signUp = async (req, res, next) => {
+const signUp = async (req, res, next) => {
   const { firstName, lastName, email, password } = req.body;
   //check if all areas filled (more security than doing in the FE)
   if (!firstName || !lastName || !email || !password) {
@@ -182,12 +96,15 @@ const hashedpassword = await bcrypt.hash(password, 10)
 
 
 
-  export const logOut = async (req, res) => {
+  const logOut = async (req, res) => {
     res.clearCookie('token', {
       httpOnly: true,
     });
     res.status(200).json({ message: 'User logged out successfully' });
   };
+
+export default auth 
+
 
 
 

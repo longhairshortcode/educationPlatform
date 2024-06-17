@@ -1,5 +1,5 @@
 import express from "express"
-import {parent} from "../controller/controllerCenter.js"
+import {parent} from "../controllers/controllerCenter.js"
 const router = express.Router();
 
 router.post('/create-profile', parent.createParentProfile)

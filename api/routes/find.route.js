@@ -1,5 +1,5 @@
 import express from "express"
-import {find} from "../controller/controllerCenter.js"
+import {find} from "../controllers/controllerCenter.js"
 const router = express.Router();
 
 router.get('/search-all-tutors', find.searchAllTutors)

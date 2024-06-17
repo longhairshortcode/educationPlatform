@@ -1,5 +1,5 @@
 import express from "express"
-import {review} from "../controller/controllerCenter.js"
+import {review} from "../controllers/controllerCenter.js"
 const router = express.Router();
 
 router.post('/leave-review', review.leaveReview)
