@@ -18,4 +18,3 @@ class Find{
 }
 
 export default Find
-aasssssssssss
