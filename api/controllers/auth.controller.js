@@ -4,7 +4,7 @@ import pool from '../config/database.js';
 import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken'
 
-sss
+ssss
 class Auth {
   static async login (req, res) {
     const {email, password} = req.body
