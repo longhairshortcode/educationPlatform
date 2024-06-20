@@ -1,5 +1,6 @@
 SHOW databases; 
 USE educationplatform;
+SHOW TABLES;
 CREATE TABLE educator (
     id INT AUTO_INCREMENT PRIMARY KEY,
     first_name VARCHAR(50) NOT NULL,
@@ -89,3 +90,5 @@ CREATE TABLE requests (
     FOREIGN KEY (educator_id) REFERENCES educator(id)
 );
 
+SELECT * FROM user;
+SELECT * FROM educator; 

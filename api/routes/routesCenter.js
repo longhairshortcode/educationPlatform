@@ -11,7 +11,7 @@ const router = express.Router();
 
 router.use('/auth', Auth)
 router.use('/parent', Parent)
-router.use('/educator',Educator)
+router.use('/educator', Educator)
 router.use('/review', Review)
 router.use('/message', Message)
 router.use('/find', Find)
