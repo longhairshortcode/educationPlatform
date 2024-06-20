@@ -8,7 +8,7 @@ router.post("/sign-up", Auth.signUp)
 router.post("/login", Auth.login)
 
 
-router.post("/log-out", Auth.logout)
+router.post("/logout", Auth.logout)
 
 
 export default router;

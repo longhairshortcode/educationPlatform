@@ -21,8 +21,6 @@ class Auth {
         return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 
     }
     const user = resultEmail[0]
-    console.log("Here is the user: ", user)
-    console.log("Here is the user password: ", user[0].userPassword)
     
     const isPasswordCorrect = await bcrypt.compare(password, user[0].userPassword)
     
@@ -79,11 +77,11 @@ class Auth {
     res.cookie('token', token, {
         httpOnly: true,
       });
-      console.log(token)
+
   
       res.status(201).json({ message: 'User was created successfully' }); 
      }catch(err){
-          console.log(err)
+       
       }
               
    }catch(err){
