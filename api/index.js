@@ -16,6 +16,7 @@ import compression from "compression"
 import helmet from "helmet"
 //security so that user has a limit on incorrect passwords and other requests
 import rateLimit from "express-rate-limit"
+import cookieParser from 'cookie-parser';
 
 // IMPORTS (FILES ) 
 //import connectDB from "./config/db.js" -- maybe import db here too like mongo, optional SQL
@@ -37,6 +38,8 @@ const limiter = rateLimit({
 //CONFIGS features imported from online to be used in the whole project, aka using the things that you
 //imported
 dotenv.config()
+app.use(cookieParser());
+
 app.use(limiter)
 app.use(morgan('dev'))
 app.use(compression())

@@ -43,24 +43,32 @@ class Auth {
   
   
   
-  
-  
   // for signup, using async await since promisfy pool (connection) in database file, so no promises here 
   //and added try/catch 
   //QQQQ what does next() at the end do, why no sending message / console log?
   static async signUp  (req, res, next)  {
-    const { firstName, lastName, email, password } = req.body;
+    console.log("weslet here")
+    const { firstName, lastName, email, password, role } = req.body;
     //check if all areas filled (more security than doing in the FE)
     if (!firstName || !lastName || !email || !password) {
         return res.status(400).json({ message: 'All fields are required' });
       }
+      console.log("validation done ")
     //connect to db, use that connection to check if email already exists, if it does via length > 0, send already exists message
     //if doesn't exists, hash pw, then try/catch to create/save new user in db
     //
     try{
         const connection = await pool.getConnection()
-        //check if user already exists 
-      const resultEmail = await connection.query('SELECT email FROM user WHERE email = ?', [email])
+        console.log("connecting to db done")
+        //check if user already exists
+        if (role === "educator "){
+          var resultEmail = await connection.query('SELECT email FROM educator WHERE email = ?', [email])
+        } else {
+          var resultEmail = await connection.query('SELECT email FROM parent WHERE email = ?', [email])
+
+        }
+        console.log("searching for existing user done")
+
   
         if (resultEmail[0].length > 0) {
           return res.status(409).json({ message: 'User already exists' });
@@ -68,9 +76,14 @@ class Auth {
     }
   const hashedpassword = await bcrypt.hash(password, 10)
   //as mentoined above, if hashing complete, connect to db and create new user
-    try{
-          const resultNewUser = await connection.query('INSERT INTO user (firstName, lastName, email, userPassword) VALUES (?, ?, ?, ?)',
-              [firstName, lastName, email, hashedpassword])            
+ 
+      if (role === "educator"){
+        var resultNewUser = await connection.query('INSERT INTO educator (first_name, last_name, email, password) VALUES (?, ?, ?, ?)'
+        ,[firstName, lastName, email, hashedpassword])            
+      }else {
+        var resultNewUser = await connection.query('INSERT INTO parent (first_name, last_name, email, password) VALUES (?, ?, ?, ?)'
+        ,[firstName, lastName, email, hashedpassword])  
+      }
         
                       // Set a secure, HTTP-only cookie 
     const token = jwt.sign({email}, process.env.JWT_KEY)  
@@ -78,20 +91,14 @@ class Auth {
         httpOnly: true,
       });
 
-  
+
       res.status(201).json({ message: 'User was created successfully' }); 
-     }catch(err){
-       
-      }
               
    }catch(err){
-    next()
+    console.log("error ", err.message)
+    res.status(500).json({message: err})
   }
   };
-  
-  
-  
-  
   
   
     static async logout(req, res, next){
