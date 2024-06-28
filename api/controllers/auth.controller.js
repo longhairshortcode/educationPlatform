@@ -15,7 +15,7 @@ class Auth {
     
     try{
       const connection = await pool.getConnection()
-      const resultEmail = await connection.query('SELECT *  FROM user WHERE email = ?', [email])
+      const resultEmail = await connection.query('SELECT *  FROM educator, parent WHERE email = ?', [email])
       
       if (resultEmail[0].length == 0) {
         return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 

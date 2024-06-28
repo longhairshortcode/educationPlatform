@@ -6,8 +6,8 @@ const router = express.Router();
 
 
 router.post('/create-profile',  authenticate , Educator.createEducatorProfile)
-router.put('/edit-profile', Educator.editEducatorProfile)
-router.get('/profile/:tutorId', Educator.getEducatorProfile)
+router.patch('/edit-profile', authenticate, Educator.editEducatorProfile)
+// router.get('/profile/:tutorId', authenticate, Educator.getEducatorProfile)
 // router.post('/upload-image',  uploadEducatorImage)
 // router.delete('/delete-image',  deleteEducatorImage)
 
