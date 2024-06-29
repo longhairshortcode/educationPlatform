@@ -1,9 +1,10 @@
 .componentContainer{
     position: fixed;
+    top: 60px;
     display: flex;
     justify-content: center;
     background-color: rgb(73, 180, 180);
-    border: 4px yellow solid;
+    /* border: 4px yellow solid; */
     height: 610px;
     /* max-height: 60%; */
     width: 100vw;

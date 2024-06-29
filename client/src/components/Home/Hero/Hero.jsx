@@ -5,11 +5,11 @@ function Hero() {
     <div className={style.componentContainer}>
         <div className={style.leftAndRightContainer}>
         <div className={style.leftContainer}>
-            <h1 className={style.title}>Help your child thrive in reading</h1>
-            <p className={style.subTitle}>Support you child as they discover a new learning journey with ReadyReader</p>
-            <div className={style.twoButtonsContainer}>
-                <div className={style.accountButton}>Get a Free Account</div>
-                <div className={style.membershipButton}>View Memberships</div>
+            <h2 className={style.question}>Ready for quality tutoring or to learn something new and educational?</h2>
+            <h1 className={style.title}>Custom <span className={style.instruction}>Instruction</span> for <span className={style.children}>Children </span> By Real <span className={style.educators}>Educators</span></h1>
+            <div className={style.buttonsContainer}> 
+                <button className={style.parentLoginButton}>Get a Free Account</button>
+                <button className={style.educatorLoginButton}>View Memberships</button>
             </div>
         </div>
         <div className={style.rightImageContainer}>
