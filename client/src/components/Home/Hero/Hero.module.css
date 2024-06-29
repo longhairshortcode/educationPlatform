@@ -33,7 +33,7 @@
 }
 
 
-.buttonsContainer{
+.container{
     display: flex;
     border: 2px sold red;
 }
