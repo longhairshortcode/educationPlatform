@@ -10,15 +10,29 @@
     width: 100vw;
 }
 
-.leftAndRightContainer{
+.textContainer{
     display: flex;
-    border: 2px lightblue solid;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.leftContainer{
-    width: 50%;
+.question{
+    color: rgb(239, 185, 48);
 }
 
-.rightImageContainer{
-    width: 50%;
+.instruction{
+    color:rgb(196, 162, 240);
+}
+
+.children{
+    color: rgb(235, 222, 191);
+}
+
+.educators{
+    color: rgb(113, 245, 242);
+}
+
+.parentLoginButton, .educatorLoginButton{
+    background-color: rgb(239, 185, 48);
+    border-radius: 30px;
 }
