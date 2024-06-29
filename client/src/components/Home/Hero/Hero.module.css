@@ -32,7 +32,9 @@
     color: rgb(113, 245, 242);
 }
 
-
+.textContainer{
+  border: 2px solid yellow;  
+}
 .buttonsContainer{
     display: flex;
     justify-content: center;
