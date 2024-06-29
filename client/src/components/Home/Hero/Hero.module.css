@@ -33,9 +33,11 @@
 }
 
 
-.container{
+.buttonsContainer{
     display: flex;
-    border: 2px sold red;
+    justify-content: center;
+    gap: 70px;
+    border: 2px solid red;
 }
 
 .parentLoginButton, .educatorLoginButton{
