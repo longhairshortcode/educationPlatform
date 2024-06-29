@@ -38,6 +38,7 @@
     justify-content: center;
     gap: 70px;
     border: 2px solid red;
+    font-weight: bold;
 }
 
 .parentLoginButton, .educatorLoginButton{
