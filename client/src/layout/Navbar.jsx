@@ -1,4 +1,5 @@
 import style from "./Navbar.module.css"
+import { Link } from "react-router-dom"
 
 function Navbar() {
   return (
@@ -20,7 +21,7 @@ function Navbar() {
         <p className={`${style.links} ${style.educators}`}>Contact Us</p>
       </div>
       <div className={style.signUpButtonContainer}>
-        <button className={style.signUpButton}>Sign Up</button>
+        <button className={style.signUpButton}><Link className={style.createOne}to={"/sign-up"}>Sign Up</Link></button>
       </div>
     </nav>
   )
