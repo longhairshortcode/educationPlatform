@@ -43,7 +43,7 @@ function Signup() {
               <input
                 type="password"
                 className={style.confirmPassword}
-                name="confirmPasswordsssssssd"
+                name="confirmPasswordssssssssd"
                 // value={userLogin.password}
                 // onChange={handleChange}
                 placeholder="Password"
