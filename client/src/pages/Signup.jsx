@@ -1,4 +1,4 @@
-import style from "./Style/EducatorLogin.module.css"
+import style from "./Style/Signup.module.css"
 // import parentImage from "../assets/parentLogin.webp"
 import community from "../assets/community.jpg"
 import { Link } from "react-router-dom"
@@ -8,6 +8,9 @@ function Signup() {
     <div className={style.componentContainer}>
       <div className={style.leftAndRightContainer}>
         <div className={style.leftContainer}>
+            <img className={style.communityImage} src={community} alt="cartoon of people connecting online from all over the world"/>
+        </div>
+        <div className={style.rightContainer}>
             <form className={style.formContainer} /*onSubmit={handleSubmit}*/>
             <div className={style.logoContainer}>
               <div className={style.circlesContainer}>
@@ -36,6 +39,15 @@ function Signup() {
                 // onChange={handleChange}
                 placeholder="Password"
                 required/>
+              
+              <input
+                type="password"
+                className={style.confirmPassword}
+                name="confirmPassword"
+                // value={userLogin.password}
+                // onChange={handleChange}
+                placeholder="Password"
+                required/>
             </div>
                 <div className={style.forgotContainer}>
                     <p className={style.forgot}>Forget your password? Click <Link className={style.createOne}to={"/sign-up"}>here</Link>.</p>
@@ -46,9 +58,6 @@ function Signup() {
                     <p className={style.message}>Don't have an account? Create one <Link className={style.createOne}to={"/sign-up"}>here.</Link></p>
                 </div>
             </form>
-        </div>
-        <div className={style.rightContainer}>
-            <img className={style.communityImage} src={community} alt="cartoon of people connecting online from all over the world"/>
         </div>
       </div>
 
