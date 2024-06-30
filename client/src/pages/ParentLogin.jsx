@@ -16,6 +16,7 @@ function ParentLogin() {
               </div>
               <p className={style.logoName}>EduTutor</p>
             </div>
+            <p className={style.welcome}>WELCOME PARENT!</p>
             <p className={style.title}>Login to Start Learning</p>
             <div className={style.emailAndPasswordContainer}>  
               <input
