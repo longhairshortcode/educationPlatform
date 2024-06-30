@@ -72,7 +72,7 @@ function Signup() {
                 </div> 
             
                 <div className={style.buttonAndMessage}>
-                    <button className={style.loginButton}>Login</button>
+                    <button className={style.loginButton}>Join</button>
                     <p className={style.message}>Don't have an account? Create one <Link className={style.createOne}to={"/sign-up"}>here.</Link></p>
                 </div>
             </form>
