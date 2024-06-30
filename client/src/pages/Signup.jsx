@@ -22,6 +22,24 @@ function Signup() {
             <p className={style.title}>Welcome to our<span className={style.parentWelcome}> Community!</span> <br/> Sign-up to Start Connecting</p>
             <div className={style.emailAndPasswordContainer}>  
               <input
+                type="text"
+                className={style.lastName}
+                name="firstName"
+                // value={parentLogin.email}
+                // onChange={handleChange}
+                placeholder="First Name"
+                required/>
+            
+              <input
+                type="text"
+                className={style.lastName}
+                name="lastName"
+                // value={parentLogin.email}
+                // onChange={handleChange}
+                placeholder="Last Name"
+                required/>
+              
+              <input
                 type="email"
                 className={style.email}
                 name="email"
@@ -43,10 +61,10 @@ function Signup() {
               <input
                 type="password"
                 className={style.confirmPassword}
-                name="confirmPasswordssssssssssssd"
+                name="confirmPassword"
                 // value={userLogin.password}
                 // onChange={handleChange}
-                placeholder="Password"
+                placeholder="Confirm Password"
                 required/>
             </div>
                 <div className={style.forgotContainer}>
