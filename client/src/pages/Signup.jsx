@@ -16,7 +16,7 @@ function Signup() {
               </div>
               <p className={style.logoName}>EduTutor</p>
             </div>
-            <p className={style.title}>Welcome, <span className={style.parentWelcome}>Educator!</span> <br/> Login to Start Teaching</p>
+            <p className={style.title}>Welcome to our<span className={style.parentWelcome}> Community!</span> <br/> Sign-up to Start Connecting</p>
             <div className={style.emailAndPasswordContainer}>  
               <input
                 type="email"
