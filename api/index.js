@@ -44,7 +44,11 @@ app.use(limiter)
 app.use(morgan('dev'))
 app.use(compression())
 app.use(helmet())
-app.use(cors()) 
+app.use(cors({
+    origin: 'http://localhost:5173', 
+    credentials: true, // allow credentials (cookies)
+    methods : ["POST", "GET", "PUT", "DELETE"]
+  }));
 
 //Json Parsing Middleware
 app.use(express.json()); // Middleware to parse JSON payloads, understand any json

@@ -90,7 +90,7 @@ class Auth {
     res.cookie('token', token, {
         httpOnly: true,
       });
-
+      console.log(token)
 
       res.status(201).json({ message: 'User was created successfully' }); 
               

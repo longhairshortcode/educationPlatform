@@ -1,9 +1,26 @@
 import style from "./Style/Signup.module.css"
 // import parentImage from "../assets/parentLogin.webp"
 import community from "../assets/community.jpg"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useForm } from "react-hook-form";
+import axios from "axios"
+
 
 function Signup() {
+  const navigate = useNavigate()
+  const { register, handleSubmit } = useForm();
+  const onSubmit = async (data) => {
+    try {
+      const result = await axios.post("http://localhost:5000/auth/signup", data)
+      console.log("Successfully signed up: ", result)
+      if (result.status == 201){
+        navigate("/member")
+      } 
+    } catch (err) {
+      console.log("Here is the problem: ", err)
+    }
+  };
+
   return (
     <div className={style.componentContainer}>
       <div className={style.leftAndRightContainer}>
@@ -11,7 +28,7 @@ function Signup() {
             <img className={style.communityImage} src={community} alt="cartoon of people connecting online from all over the world"/>
         </div>
         <div className={style.rightContainer}>
-            <form className={style.formContainer} /*onSubmit={handleSubmit}*/>
+            <form className={style.formContainer} onSubmit={handleSubmit(onSubmit)}>
             <div className={style.logoContainer}>
               <div className={style.circlesContainer}>
                 <div className={style.circle1}></div>
@@ -21,12 +38,13 @@ function Signup() {
             </div>
             <p className={style.title}>Welcome to our<span className={style.parentWelcome}> Community!</span> <br/> Sign-up to Start Connecting</p>
             <div className={style.emailAndPasswordContainer}>  
+             
+
               <input
                 type="text"
                 className={style.lastName}
                 name="firstName"
-                // value={parentLogin.email}
-                // onChange={handleChange}
+                {...register("firstName")}
                 placeholder="First Name"
                 required/>
             
@@ -34,8 +52,7 @@ function Signup() {
                 type="text"
                 className={style.lastName}
                 name="lastName"
-                // value={parentLogin.email}
-                // onChange={handleChange}
+                {...register("lastName")}
                 placeholder="Last Name"
                 required/>
               
@@ -43,8 +60,7 @@ function Signup() {
                 type="email"
                 className={style.email}
                 name="email"
-                // value={parentLogin.email}
-                // onChange={handleChange}
+                {...register("email")}
                 placeholder="Email"
                 required/>
 
@@ -53,8 +69,7 @@ function Signup() {
                 type="password"
                 className={style.password}
                 name="password"
-                // value={userLogin.password}
-                // onChange={handleChange}
+                {...register("password")}
                 placeholder="Password"
                 required/>
               
@@ -62,8 +77,7 @@ function Signup() {
                 type="password"
                 className={style.confirmPassword}
                 name="confirmPassword"
-                // value={userLogin.password}
-                // onChange={handleChange}
+                {...register("confirmPassword")}
                 placeholder="Confirm Password"
                 required/>
             </div>
@@ -72,13 +86,12 @@ function Signup() {
                 </div> 
             
                 <div className={style.buttonAndMessage}>
-                    <button className={style.loginButton}>Join</button>
+                    <button type="submit" className={style.loginButton}>Join</button>
                     <p className={style.message}>Don't have an account? Create one <Link className={style.createOne}to={"/sign-up"}>here.</Link></p>
                 </div>
             </form>
         </div>
-      </div>
-
+      </div> 
     </div>
   )
 }
