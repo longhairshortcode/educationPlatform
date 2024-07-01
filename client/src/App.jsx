@@ -6,7 +6,7 @@ import Signup from "./pages/Signup.jsx"
 import Member from "./pages/Member.jsx"
 
 function App() {
-d
+
 
   return (
     <>
