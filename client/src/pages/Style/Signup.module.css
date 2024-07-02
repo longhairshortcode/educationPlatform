@@ -117,6 +117,10 @@ body, html {
     width: 100%;
 }
 
+.educatorLable, .parentLable{
+    color: black;
+}
+
 .firstName, .lastName, .email, .password, .confirmPassword{
   height: 40px;
   width: 100%;

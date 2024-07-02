@@ -3,15 +3,16 @@ import style from "./Style/Signup.module.css"
 import community from "../assets/community.jpg"
 import { Link, useNavigate } from "react-router-dom"
 import { useForm } from "react-hook-form";
-import axios from "axios"
+import axiosInstance from "../utils/axiosRequest.js"
 
 
 function Signup() {
   const navigate = useNavigate()
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
+    data.role = "parent"
     try {
-      const result = await axios.post("http://localhost:5000/auth/signup", data)
+      const result = await axiosInstance.post("/auth/signup", data)
       console.log("Successfully signed up: ", result)
       if (result.status == 201){
         navigate("/member")
@@ -38,8 +39,26 @@ function Signup() {
             </div>
             <p className={style.title}>Welcome to our<span className={style.parentWelcome}> Community!</span> <br/> Sign-up to Start Connecting</p>
             <div className={style.emailAndPasswordContainer}>  
-             
-
+              <div className={style.parentRadioLable}>             
+              <lable className={style.parentLable}>Parent</lable>
+              <input
+                type="radio"
+                className={style.parentRole}
+                name="parentRole"
+                {...register("parentRole")}
+                placeholder="Parent"
+                required/>
+              </div>
+              <div className={style.educatorRadioLable}>
+              <lable className={style.educatorLable}>Eductor</lable> 
+              <input
+                type="radio"
+                className={style.educatorRole}
+                name="educatorRole"
+                {...register("educatorRole")}
+                placeholder="Educator"
+                required/>
+              </div>
               <input
                 type="text"
                 className={style.lastName}

@@ -60,6 +60,7 @@ class Auth {
     try{
         const connection = await pool.getConnection()
         console.log("connecting to db done")
+        console.log(role)
         //check if user already exists
         if (role === "educator "){
           var resultEmail = await connection.query('SELECT email FROM educator WHERE email = ?', [email])
@@ -88,8 +89,9 @@ class Auth {
                       // Set a secure, HTTP-only cookie 
     const token = jwt.sign({email}, process.env.JWT_KEY)  
     res.cookie('token', token, {
-        httpOnly: true,
-      });
+      httpOnly: true,
+      sameSite: 'Strict', // Adjust sameSite attribute as needed (None, Lax, Strict)
+    });
       console.log(token)
 
       res.status(201).json({ message: 'User was created successfully' }); 
