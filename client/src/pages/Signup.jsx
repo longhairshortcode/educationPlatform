@@ -10,7 +10,6 @@ function Signup() {
   const navigate = useNavigate()
   const { register, handleSubmit } = useForm();
   const onSubmit = async (data) => {
-    data.role = "parent"
     try {
       const result = await axiosInstance.post("/auth/signup", data)
       console.log("Successfully signed up: ", result)
@@ -40,29 +39,30 @@ function Signup() {
             <p className={style.title}>Welcome to our<span className={style.parentWelcome}> Community!</span> <br/> Sign-up to Start Connecting</p>
             <div className={style.emailAndPasswordContainer}>  
               <div className={style.parentRadioLable}>             
-              <lable className={style.parentLable}>Parent</lable>
+              <label htmlFor="parentRole" className={style.parentLable}>Parent
               <input
                 type="radio"
                 className={style.parentRole}
-                name="parentRole"
-                {...register("parentRole")}
-                placeholder="Parent"
-                required/>
+                // name="parentRole"
+                {...register("role")}
+                value="parent"
+                /></label>
               </div>
               <div className={style.educatorRadioLable}>
-              <lable className={style.educatorLable}>Eductor</lable> 
+              <label htmlFor="educatorRole" className={style.educatorLable}>Eductor 
               <input
                 type="radio"
                 className={style.educatorRole}
-                name="educatorRole"
-                {...register("educatorRole")}
-                placeholder="Educator"
-                required/>
+                // name="educatorRole"
+                {...register("role")}
+                value="educator"
+                /></label>
               </div>
               <input
                 type="text"
-                className={style.lastName}
-                name="firstName"
+                className={style.firstName}
+                id="firstName"
+                // name="firstName"
                 {...register("firstName")}
                 placeholder="First Name"
                 required/>
@@ -70,7 +70,8 @@ function Signup() {
               <input
                 type="text"
                 className={style.lastName}
-                name="lastName"
+                id="lastName"
+                // name="lastName"
                 {...register("lastName")}
                 placeholder="Last Name"
                 required/>
@@ -78,7 +79,8 @@ function Signup() {
               <input
                 type="email"
                 className={style.email}
-                name="email"
+                id="email"
+                // name="email"
                 {...register("email")}
                 placeholder="Email"
                 required/>
@@ -87,7 +89,8 @@ function Signup() {
               <input
                 type="password"
                 className={style.password}
-                name="password"
+                // name="password"
+                id="password"
                 {...register("password")}
                 placeholder="Password"
                 required/>
@@ -95,7 +98,8 @@ function Signup() {
               <input
                 type="password"
                 className={style.confirmPassword}
-                name="confirmPassword"
+                // name="confirmPassword"
+                id="confirmPassword"
                 {...register("confirmPassword")}
                 placeholder="Confirm Password"
                 required/>

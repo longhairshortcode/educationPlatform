@@ -15,20 +15,21 @@ class Auth {
     
     try{
       const connection = await pool.getConnection()
-      const resultEmail = await connection.query('SELECT *  FROM educator, parent WHERE email = ?', [email])
+      const resultEmail = await connection.query('SELECT *  FROM educator E, parent P WHERE E.email = ? or P.email =  ?', [email, email])
       
       if (resultEmail[0].length == 0) {
         return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 
     }
     const user = resultEmail[0]
-    
-    const isPasswordCorrect = await bcrypt.compare(password, user[0].userPassword)
+    console.log("here is the user: ", user)
+    const isPasswordCorrect = await bcrypt.compare(password, user[0].password)
     
     if (!isPasswordCorrect){
       return res.status(401).json({
         message: "Password is incorrect, please try again."
       })
     }
+    
     const token = jwt.sign({email}, process.env.JWT_KEY)  
     
     res.cookie('token', token, {
@@ -37,7 +38,7 @@ class Auth {
       res.status(200).json({ message: 'User logged in successfully' });
   }catch(err){
     console.error(err)
-    return res.status(500).json({ message: 'Internal Server Error' });
+    return res.status(500).json({ message: 'Internal Server Error', err });
   }
   }
   
@@ -53,7 +54,7 @@ class Auth {
     if (!firstName || !lastName || !email || !password) {
         return res.status(400).json({ message: 'All fields are required' });
       }
-      console.log("validation done ")
+      console.log("validation done ", req.body)
     //connect to db, use that connection to check if email already exists, if it does via length > 0, send already exists message
     //if doesn't exists, hash pw, then try/catch to create/save new user in db
     //
