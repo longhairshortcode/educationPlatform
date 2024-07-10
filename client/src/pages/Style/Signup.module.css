@@ -35,9 +35,10 @@ body, html {
 .formContainer{
     border: 6px solid  rgb(239, 185, 48);
     background-color: white;
-    height: 600px;
+    height: 800px;
     width: 600px;
     padding: 50px;
+    font-size: 12px;
 }
 
 /* Right side container */
@@ -112,20 +113,35 @@ body, html {
     display: flex;
     flex-direction: column;
     /* align-items: center; */
-    gap: 10px;
+    /* gap: 1px; */
     /* border: 2px solid red; */
     width: 100%;
 }
 
-.educatorLable, .parentLable{
-    color: black;
+.selectRoleLabel, .firstNameLabel, .emailLabel, .passwordLabel, .confirmPasswordLabel {
+    color:  rgb(208, 134, 243);
+    font-weight: bold;
+    
+    
 }
 
 .firstName, .lastName, .email, .password, .confirmPassword{
-  height: 40px;
+  height: 30px;
   width: 100%;
   box-sizing: border-box;
   padding-left: 30px; 
+}
+
+.error{
+    color: red;
+    font-size: 10px;
+    text-align: left;
+}
+
+.formControl{
+ /* border: 2px solid green; */
+ height: 60px;
+ margin-bottom: 20px;
 }
 
 .loginButton{
