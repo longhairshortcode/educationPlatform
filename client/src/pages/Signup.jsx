@@ -163,6 +163,7 @@ function Signup() {
               <p className={style.message}>Don't have an account? Create one <Link className={style.createOne} to={"/sign-up"}>here.</Link></p>
             </div>
           </form>
+          <DevTool control={control}/>
         </div>
       </div>
     </div>
