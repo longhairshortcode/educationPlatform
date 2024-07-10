@@ -118,7 +118,7 @@ body, html {
     width: 100%;
 }
 
-.selectRoleLabel, .firstNameLabel, .lastNameLabel .emailLabel, .passwordLabel, .confirmPasswordLabel {
+.selectRoleLabel, .firstNameLabel, .lastNameLabel, .emailLabel, .passwordLabel, .confirmPasswordLabel {
     color:  rgb(208, 134, 243);
     font-weight: bold;
     
