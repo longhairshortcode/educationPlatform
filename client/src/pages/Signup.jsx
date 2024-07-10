@@ -102,7 +102,14 @@ function Signup() {
                     type="text"
                     id="firstName"
                     className={style.firstName}
-                    {...register("firstName", { required: 'First name is required' })}
+                    {...register("firstName", { 
+                      required: 'First name is required',
+                      minLength: {
+                        value: 2,
+                        message: "First name must be at least 2 letters."
+                      },
+                      required: "First name is required" 
+                    })}
                   />
                 </label>
                 <p className={style.error}>{errors.firstName?.message}</p>
@@ -114,7 +121,14 @@ function Signup() {
                     type="text"
                     id="lastName"
                     className={style.lastName}
-                    {...register("lastName", { required: 'Last name is required' })}
+                    {...register("lastName", { 
+                      required: 'Last name is required',
+                      minLength:{
+                        value: 2,
+                        message: "Last name must be at least 2 letters long" 
+                      },
+                      required: "Last name is required"
+                      })}
                   />
                 </label>
                 <p className={style.error}>{errors.lastName?.message}</p>
