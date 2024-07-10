@@ -35,7 +35,7 @@ body, html {
 .formContainer{
     border: 6px solid  rgb(239, 185, 48);
     background-color: white;
-    height: 800px;
+    height: 820px;
     width: 600px;
     padding: 50px;
     font-size: 12px;
@@ -141,7 +141,12 @@ body, html {
 .formControl{
  /* border: 2px solid green; */
  height: 60px;
- margin-bottom: 20px;
+ margin-bottom: 30px;
+}
+
+.parentAndEducatorContainer{
+    display: flex;
+    flex-direction: column;
 }
 
 .loginButton{

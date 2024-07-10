@@ -48,11 +48,7 @@ function Signup() {
           />
         </div>
         <div className={style.rightContainer}>
-          <form
-            className={style.formContainer}
-            onSubmit={handleSubmit(onSubmit)}
-            noValidate
-          >
+          <form className={style.formContainer} onSubmit={handleSubmit(onSubmit)} noValidate>
             <div className={style.logoContainer}>
               <div className={style.circlesContainer}>
                 <div className={style.circle1}></div>
@@ -60,13 +56,13 @@ function Signup() {
               </div>
               <p className={style.logoName}>EduTutor</p>
             </div>
-            <p className={style.title}>
-              Welcome to our<span className={style.parentWelcome}> Community!</span>{" "}
+            <p className={style.title}>Welcome to our<span className={style.parentWelcome}> Community!</span>{" "}
               <br /> Sign-up to Start Connecting
             </p>
             <div className={style.emailAndPasswordContainer}>
+            <div className={style.formControl}>
               <label className={style.selectRoleLabel}>Select Your Role:</label>
-              {/* <div className={style.formControl}> */}
+                <div className={style.parentAndEducatorContainer}>
                 <label htmlFor="parentRole" className={style.parentLabel}>
                   Parent
                   <input
@@ -74,7 +70,6 @@ function Signup() {
                     id="parentRole"
                     className={style.parentRole}
                     {...register("role")}
-                    value="parent"
                   />
                 </label>
               {/* </div> */}
@@ -85,12 +80,15 @@ function Signup() {
                     type="radio"
                     id="educatorRole"
                     className={style.educatorRole}
-                    {...register("role", { required: 'Please select your role' })}
-                    value="educator"
+                    {...register("role", { 
+                      required: 'Please select your role' 
+                    })}
                   />
                 </label>
                 <p className={style.error}>{errors.role?.message}</p>
-              {/* </div> */}
+        
+              </div>
+              </div>
               <div className={style.formControl}>
                 <label htmlFor="firstName" className={style.firstNameLabel}>
                   First Name
