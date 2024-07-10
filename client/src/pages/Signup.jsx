@@ -10,7 +10,7 @@ import axiosInstance from "../utils/axiosRequest.js"
 function Signup() {
   const navigate = useNavigate()
   const form = useForm/*<FormValues>*/();
-  const { register, control, handleSubmit, formState } = form;
+  const { register, control, handleSubmit, formState, getValues } = form;
   const {errors} = formState;
   // const {name, ref, onChange, onBlur} = register("firstName")
 
@@ -36,6 +36,12 @@ function Signup() {
       console.log("Here is the problem: ", err)
     }
   };
+
+    // Validation function to check password match
+    const validatePasswordMatch = (value) => {
+      const { password } = getValues();
+      return value === password || 'Passwords do not match';
+    };
 
   return (
     <div className={style.componentContainer}>
@@ -138,7 +144,13 @@ function Signup() {
                     type="password"
                     id="password"
                     className={style.password}
-                    {...register("password", { required: "Password is required" })}
+                    {...register("password", { 
+                      required: "Password is required", 
+                      minLength:{
+                        value: 6,
+                        message: "Password must be at least 6 characters long"
+                      }
+                    })}
                   />
                 </label>
                 <p className={style.error}>{errors.password?.message}</p>
@@ -150,7 +162,12 @@ function Signup() {
                     type="password"
                     id="confirmPassword"
                     className={style.confirmPassword}
-                    {...register("confirmPassword", { required: 'Confirmation password is required' })}
+                    {...register("confirmPassword", { 
+                      required: 'Confirmation password is required',
+                      validate: {
+                        matchesPassword: validatePasswordMatch
+                      }
+                    })}
                   />
                 </label>
                 <p className={style.error}>{errors.confirmPassword?.message}</p>
