@@ -9,7 +9,15 @@ import axiosInstance from "../utils/axiosRequest.js"
 
 function Signup() {
   const navigate = useNavigate()
-  const form = useForm/*<FormValues>*/();
+  const form = useForm/*<FormValues>*/({
+    defaultValues: {
+      firstName: "Batwoman",
+      lastName: "Learner",
+      email:"batwoman@email.com",
+      password: "",
+      confirmPassword: ""
+    }
+  });
   const { register, control, handleSubmit, formState, getValues } = form;
   const {errors} = formState;
   // const {name, ref, onChange, onBlur} = register("firstName")
@@ -108,7 +116,7 @@ function Signup() {
                         value: 2,
                         message: "First name must be at least 2 letters."
                       },
-                      required: "First name is required" 
+                      
                     })}
                   />
                 </label>
@@ -127,7 +135,7 @@ function Signup() {
                         value: 2,
                         message: "Last name must be at least 2 letters long" 
                       },
-                      required: "Last name is required"
+                     
                       })}
                   />
                 </label>

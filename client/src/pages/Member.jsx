@@ -5,6 +5,7 @@ function Member() {
   return (
     <div>
       <Navbar/>
+    
     </div>
   )
 }
