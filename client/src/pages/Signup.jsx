@@ -15,7 +15,7 @@ function Signup() {
       lastName: "Learner",
       email:"batwoman@email.com",
       password: "",
-      confirmPassword: ""
+      confirmPassword: "",
     }
   });
   const { register, control, handleSubmit, formState, getValues } = form;
@@ -82,6 +82,7 @@ function Signup() {
                   <input
                     type="radio"
                     id="parentRole"
+                    value={"parent"}
                     className={style.parentRole}
                     {...register("role")}
                   />
@@ -93,6 +94,7 @@ function Signup() {
                   <input
                     type="radio"
                     id="educatorRole"
+                    value={"educator"}
                     className={style.educatorRole}
                     {...register("role", { 
                       required: 'Please select your role' 
