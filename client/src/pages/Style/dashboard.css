@@ -1,0 +1,63 @@
+.educator-profile{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 98%;
+    align-items: center;
+    margin: 5px;
+    height: 97vh;
+    gap: 10px;
+}
+
+ .educator-container {
+    margin: 5px;
+    /* background-color: #edf3f4; */
+    height: 300px;
+    width: 90%; 
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 15px; */
+}
+
+.educator-card{
+    margin: 5px;
+    background-color: rgb(228, 239, 236);
+    height: 400px;
+    width: 280px;
+    border-radius: 5px;
+}
+
+.educator-bio{
+    margin: 5px;
+    background-color: #3E92A4;
+    height: 300px;
+    width: 90%;
+    border-radius: 10px;
+} 
+
+.educator-availibility{
+    margin: 5px;
+    background-color: #3E92A4;
+
+    height: 300px;
+    width: 90%;
+    border-radius: 10px;
+}
+
+.educator-left-container{
+    height: 100%;
+    width: 48%;
+    border-radius: 10px;
+    background-color: #B286eb;
+}
+
+
+.educator-right-container{
+    height: 100%;
+    width: 48%;
+    background-color: #7CE5D9;
+    border-radius: 10px;
+    
+}

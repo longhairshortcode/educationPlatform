@@ -1,12 +1,16 @@
-
-
+import "./Style/dashboard.css";
 function EducatorProfile() {
   return (
-    <div>
-      <p>This is  the profile page</p>
+    <div className="educator-profile">
+      <div className="educator-card"></div>
+      <div className="educator-bio"></div>
+      <div className="educator-container">
+        <div className="educator-left-container">one</div>
+        <div className="educator-right-container">two</div>
+      </div>
+      <div className="educator-availibility"></div>
     </div>
-  )
+  );
 }
 
-export default EducatorProfile
-
+export default EducatorProfile;
