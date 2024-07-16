@@ -9,18 +9,6 @@
     gap: 10px;
 }
 
- .educator-container {
-    margin: 5px;
-    /* background-color: #edf3f4; */
-    height: 300px;
-    width: 90%; 
-    border-radius: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* gap: 15px; */
-}
-
 .educator-card{
     margin: 5px;
     background-color: rgb(228, 239, 236);
@@ -35,15 +23,18 @@
     height: 300px;
     width: 90%;
     border-radius: 10px;
-} 
+}
 
-.educator-availibility{
+.educator-container {
     margin: 5px;
-    background-color: #3E92A4;
-
+    /* background-color: #edf3f4; */
     height: 300px;
-    width: 90%;
+    width: 90%; 
     border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    /* gap: 15px; */
 }
 
 .educator-left-container{
@@ -61,3 +52,13 @@
     border-radius: 10px;
     
 }
+
+.educator-availibility{
+    margin: 5px;
+    background-color: #3E92A4;
+
+    height: 300px;
+    width: 90%;
+    border-radius: 10px;
+}
+
