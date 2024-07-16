@@ -1,5 +1,10 @@
 import "./Style/dashboard.css";
+import {useForm} from 'react-hook-form'
 function EducatorProfile() {
+  const {setValue} = useForm()
+  const changeInput = () =>{
+    setValue("ousama")
+  }
   return (
     <div className="educator-profile">
       <div className="educator-card">
@@ -20,6 +25,8 @@ function EducatorProfile() {
           <div className="educator-bio-containers">  
             <div className="educator-bio-education">
               <p className="educator-bio-ed"> Education & Certifications</p>
+              <p>COmputer science degree</p>
+              <p>school certification</p>
             </div>
             <div className="educator-bio-about">
               <p className="educator-bio-abt"> About</p>      
@@ -31,7 +38,8 @@ function EducatorProfile() {
       </div>
       <div className="educator-container">
         <div className="educator-left-container">
-          <p className="educator-left-container-title">What I Tutor:</p>
+          <p className="educator-left-container-title">What I Tutor:<span style={{marginLeft:"40%", cursor:"pointer"}} onClick={()=>changeInput}>Edit</span></p>
+          <input type="text"  style={{width:"90%", height:"40%", background:"transparent", textDecoration:"none", border:"none"}}/>
         </div>
         <div className="educator-right-container">
         <p className="educator-right-container-title">What I Teach:</p>

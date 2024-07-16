@@ -129,7 +129,7 @@
 }
 
 .educator-availibility-center{
-    border:1px solid blue;
+    /* border:1px solid blue; */
     display:flex;
     justify-content: center;
     flex:1; 
@@ -137,7 +137,7 @@
 }
 .educator-availibility-left {
     flex:1;
-    border:1px solid blue;
+    /* border:1px solid blue; */
     display:flex;
     justify-content: center;
 }
@@ -145,6 +145,6 @@
     display:flex;
     justify-content: center;
     flex:1;
-    border:1px solid blue;
+    /* border:1px solid blue; */
 
 }
