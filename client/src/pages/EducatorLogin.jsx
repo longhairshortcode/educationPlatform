@@ -3,10 +3,11 @@ import {DevTool} from "@hookform/devtools"
 // import parentImage from "../assets/parentLogin.webp"
 import teacher from "../assets/teacher.jpg"
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import axiosInstance from "../utils/axiosRequest"
 
 function EducatorLogin() {
+  const navigate = useNavigate();
   const form = useForm();
   const { register, control, handleSubmit, formState } = form;
   const {errors} = formState;
@@ -16,8 +17,8 @@ function EducatorLogin() {
     try {
       const result = await axiosInstance.post("/auth/loginEducator", data);
       console.log("Successfully logged in: ", result);
-      if (result.status === 201) {
-        navigate("/member");
+      if (result.status === 200) {
+        navigate("/educator-profile");
       }
     } catch (err) {
       console.log("Here is the problem:", err);

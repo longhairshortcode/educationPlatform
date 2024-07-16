@@ -38,7 +38,7 @@ function EducatorProfile() {
         </div>
       </div>
       <div className="educator-availibility">
-      <div className="educator-availibility-left">
+        <div className="educator-availibility-left">
           <p className="educator-availibility-session-info">Session Info</p>
         </div>
         <div className="educator-availibility-center">

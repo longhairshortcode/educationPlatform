@@ -117,15 +117,34 @@
 }
 
 .educator-availibility{
+    display: flex;
+    justify-content: space-around;
+    align-items: baseline;
     margin: 5px;
     background-color: #3E92A4;
-
     height: 300px;
     width: 90%;
     border-radius: 10px;
+    border: 2px solid black;
 }
 
-.educator-availibility{
-    display: flex;
-    justify-content: space-around;
+.educator-availibility-center{
+    border:1px solid blue;
+    display:flex;
+    justify-content: center;
+    flex:1; 
+
+}
+.educator-availibility-left {
+    flex:1;
+    border:1px solid blue;
+    display:flex;
+    justify-content: center;
+}
+.educator-availibility-right{
+    display:flex;
+    justify-content: center;
+    flex:1;
+    border:1px solid blue;
+
 }

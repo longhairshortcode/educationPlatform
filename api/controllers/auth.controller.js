@@ -21,9 +21,7 @@ class Auth {
         return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 
     }
     const user = resultEmail[0]
-    const hashedpassword = await bcrypt.hash(password, 10)
 
-    console.log("encrypted ", hashedpassword)
     const isPasswordCorrect = await bcrypt.compare(password, user.password)
     
     if (!isPasswordCorrect){
@@ -51,22 +49,17 @@ class Auth {
     if (!email || !password) {
       return res.status(400).json({ message: 'Both fields are required' });
     }
-    console.log("the email", email)
+    console.log("the email of educator", email)
     try{
       const connection = await pool.getConnection()
-      const [resultEmail] = await connection.query('SELECT * from parent WHERE E.email = ?', [email])
-      //console.log("here is the result ", resultEmail)
+      const [resultEmail] = await connection.query('SELECT * FROM parent WHERE email = ? ', [email])
+      console.log("here is the result od educator ", resultEmail)
       if (resultEmail[0].length == 0) {
         return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 
     }
     const user = resultEmail[0]
-    console.log("here is the user: ", user)
-    console.log("front pass", password)
-    console.log("coming pass", user[0].passsword)
-  const hashedpassword = await bcrypt.hash(password, 10)
 
-    console.log("encrypted ", hashedpassword)
-    const isPasswordCorrect = await bcrypt.compare(password, user[0].password)
+    const isPasswordCorrect = await bcrypt.compare(password, user.password)
     
     if (!isPasswordCorrect){
       return res.status(401).json({
