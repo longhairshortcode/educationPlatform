@@ -4,6 +4,7 @@ import {DevTool} from "@hookform/devtools"
 import teacher from "../assets/teacher.jpg"
 import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom"
+import axiosInstance from "../utils/axiosRequest"
 
 function EducatorLogin() {
   const form = useForm();
@@ -13,7 +14,7 @@ function EducatorLogin() {
   const onSubmit = async (data) => {
     console.log("Here is the data: ", data);
     try {
-      const result = await axiosInstance.post("/auth/login", data);
+      const result = await axiosInstance.post("/auth/loginEducator", data);
       console.log("Successfully logged in: ", result);
       if (result.status === 201) {
         navigate("/member");

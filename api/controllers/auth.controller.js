@@ -6,22 +6,66 @@ import jwt from 'jsonwebtoken'
 
 
 class Auth {
-  static async login (req, res) {
+  static async loginEducator (req, res) {
     const {email, password} = req.body
     
     if (!email || !password) {
       return res.status(400).json({ message: 'Both fields are required' });
     }
-    
+    console.log("the email of educator", email)
     try{
       const connection = await pool.getConnection()
-      const resultEmail = await connection.query('SELECT *  FROM educator E, parent P WHERE E.email = ? or P.email =  ?', [email, email])
-      
+      const [resultEmail] = await connection.query('SELECT * FROM educator WHERE email = ? ', [email])
+      console.log("here is the result od educator ", resultEmail)
+      if (resultEmail[0].length == 0) {
+        return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 
+    }
+    const user = resultEmail[0]
+    const hashedpassword = await bcrypt.hash(password, 10)
+
+    console.log("encrypted ", hashedpassword)
+    const isPasswordCorrect = await bcrypt.compare(password, user.password)
+    
+    if (!isPasswordCorrect){
+      return res.status(401).json({
+        message: "Password is incorrect, please try again."
+      })
+    }
+    
+    const token = jwt.sign({email}, process.env.JWT_KEY)  
+    
+    res.cookie('token', token, {
+        httpOnly: true,
+      });
+      res.status(200).json({ message: 'User logged in successfully' });
+  }catch(err){
+    console.error(err)
+    return res.status(500).json({ message: 'Internal Server Error', err });
+  }
+  }
+  
+
+  static async loginParent (req, res) {
+    const {email, password} = req.body
+    
+    if (!email || !password) {
+      return res.status(400).json({ message: 'Both fields are required' });
+    }
+    console.log("the email", email)
+    try{
+      const connection = await pool.getConnection()
+      const [resultEmail] = await connection.query('SELECT * from parent WHERE E.email = ?', [email])
+      //console.log("here is the result ", resultEmail)
       if (resultEmail[0].length == 0) {
         return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 
     }
     const user = resultEmail[0]
     console.log("here is the user: ", user)
+    console.log("front pass", password)
+    console.log("coming pass", user[0].passsword)
+  const hashedpassword = await bcrypt.hash(password, 10)
+
+    console.log("encrypted ", hashedpassword)
     const isPasswordCorrect = await bcrypt.compare(password, user[0].password)
     
     if (!isPasswordCorrect){
@@ -48,20 +92,16 @@ class Auth {
   //and added try/catch 
   //QQQQ what does next() at the end do, why no sending message / console log?
   static async signUp  (req, res, next)  {
-    console.log("weslet here")
     const { firstName, lastName, email, password, role } = req.body;
     //check if all areas filled (more security than doing in the FE)
     if (!firstName || !lastName || !email || !password) {
         return res.status(400).json({ message: 'All fields are required' });
       }
-      console.log("validation done ", req.body)
     //connect to db, use that connection to check if email already exists, if it does via length > 0, send already exists message
     //if doesn't exists, hash pw, then try/catch to create/save new user in db
     //
     try{
         const connection = await pool.getConnection()
-        console.log("connecting to db done")
-        console.log(role)
         //check if user already exists
         if (role === "educator "){
           var resultEmail = await connection.query('SELECT email FROM educator WHERE email = ?', [email])
@@ -69,7 +109,6 @@ class Auth {
           var resultEmail = await connection.query('SELECT email FROM parent WHERE email = ?', [email])
 
         }
-        console.log("searching for existing user done")
 
   
         if (resultEmail[0].length > 0) {
@@ -77,6 +116,7 @@ class Auth {
         
     }
   const hashedpassword = await bcrypt.hash(password, 10)
+  console.log("encrypted in register , ",hashedpassword)
   //as mentoined above, if hashing complete, connect to db and create new user
  
       if (role === "educator"){

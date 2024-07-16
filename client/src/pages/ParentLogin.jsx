@@ -16,7 +16,7 @@ function ParentLogin() {
   const onSubmit = async (data) => {
     console.log("Here is the data: ", data);
     try {
-      const result = await axiosInstance.post("/auth/login", data);
+      const result = await axiosInstance.post("/auth/loginParent", data);
       console.log("Successfully logged in: ", result);
       if (result.status === 201) {
         navigate("/member");

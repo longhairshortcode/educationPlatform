@@ -4,7 +4,8 @@ const router = express.Router();
 
 // http
 
-router.post("/login", Auth.login)
+router.post("/loginParent", Auth.loginParent)
+router.post("/loginEducator", Auth.loginEducator)
 
 router.post("/signup", Auth.signUp)
 
