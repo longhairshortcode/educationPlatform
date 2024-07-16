@@ -9,6 +9,17 @@
     gap: 10px;
 }
 
+.educator-bio > p, .educator-container > div > p, .educator-availibility > div > p {
+    color: rgb(239, 185, 48);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.educator-bio > p, .educator-container > div > p {
+    text-align: center;
+}
+
+
 .educator-card{
     margin: 5px;
     background-color: rgb(228, 239, 236);
@@ -18,21 +29,41 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
+
 }
 
 .educator-card-name, .educator-card-position, .educator-card-location{
     font-weight: bold;
+    margin: 0;
 }
 
 .educator-card-name{
-    font-size: 26px;
+    font-size: 30px;
+    text-align: center;
+    border: 2px solid red;
 }
 
 .educator-card-img-container{
     border: 2px solid black;
-    width: 90px;
-    height: 100px;
+    width: 170px;
+    height: 120px;
 }
+
+.educator-card-position{
+    border: 2px solid blue;
+}
+
+.educator-card-location{
+    border: 2px solid green;
+}
+
+.educator-card-button-container{
+    border: 2px solid purple;
+    display: flex;
+    gap: 12px;
+}
+
 
 .educator-bio{
     margin: 5px;
@@ -40,6 +71,21 @@
     height: 300px;
     width: 90%;
     border-radius: 10px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+.educator-bio-title{
+    /* border: 2px solid yellow; */
+    margin: 20px 0px 0px 0px;
+}
+
+.educator-bio-containers{
+    display: flex;
+    justify-content: space-around;
+    /* border: 2px solid red; */
 }
 
 .educator-container {
@@ -79,3 +125,7 @@
     border-radius: 10px;
 }
 
+.educator-availibility{
+    display: flex;
+    justify-content: space-around;
+}
