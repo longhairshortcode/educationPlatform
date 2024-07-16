@@ -1,4 +1,4 @@
-.educator-profile{
+.educator-profile, .parentProfile{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -15,6 +15,23 @@
     height: 400px;
     width: 280px;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.educator-card-name, .educator-card-position, .educator-card-location{
+    font-weight: bold;
+}
+
+.educator-card-name{
+    font-size: 26px;
+}
+
+.educator-card-img-container{
+    border: 2px solid black;
+    width: 90px;
+    height: 100px;
 }
 
 .educator-bio{

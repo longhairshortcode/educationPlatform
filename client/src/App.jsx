@@ -5,6 +5,8 @@ import ParentLogin from "./pages/ParentLogin.jsx";
 import Signup from "./pages/Signup.jsx";
 import Member from "./pages/Member.jsx";
 import EducatorProfile from "./pages/EducatorProfile.jsx";
+import ParentProfile from "./pages/ParentProfile.jsx";
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
         <Route path="/sign-up" element={<Signup />} /> {/* Add the new route */}
         <Route path="/member" element={<Member />} /> {/* Add the new route */}
         <Route path="/educator-profile" element={<EducatorProfile />} />{" "}
+        <Route path="/parent-profile" element={<ParentProfile />} />{" "}
         {/* Add the new route */}
       </Routes>
     </>
