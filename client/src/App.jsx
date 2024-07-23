@@ -6,6 +6,7 @@ import Signup from "./pages/Signup.jsx";
 import Member from "./pages/Member.jsx";
 import EducatorProfile from "./pages/EducatorProfile.jsx";
 import ParentProfile from "./pages/ParentProfile.jsx";
+import AllEducators from "./pages/AllEducators.jsx"
 
 
 function App() {
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path="/educator-login" element={<EducatorLogin />} />{" "}
+        <Route path="/all-educators" element={<AllEducators />} />{" "}
         {/* Add the new route */}
         <Route path="/parent-login" element={<ParentLogin />} />{" "}
         {/* Add the new route */}
@@ -21,6 +23,7 @@ function App() {
         <Route path="/member" element={<Member />} /> {/* Add the new route */}
         <Route path="/educator-profile" element={<EducatorProfile />} />{" "}
         <Route path="/parent-profile" element={<ParentProfile />} />{" "}
+
         {/* Add the new route */}
       </Routes>
     </>

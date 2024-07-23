@@ -8,7 +8,7 @@ function EducatorProfile() {
   return (
     <div className="educator-profile">
       <div className="educator-card">
-        <p className="educator-card-name">Teacher Name</p>
+        <p className="educator-card-name">Ms. Shine</p>
         <div className="educator-card-img-container">
           <img className="educator-card-img"/>
         </div>
@@ -25,7 +25,7 @@ function EducatorProfile() {
           <div className="educator-bio-containers">  
             <div className="educator-bio-education">
               <p className="educator-bio-ed"> Education & Certifications</p>
-              <p>COmputer science degree</p>
+              <p>I have a BA and Masters in Early Childhood Education</p>
               <p>school certification</p>
             </div>
             <div className="educator-bio-about">
