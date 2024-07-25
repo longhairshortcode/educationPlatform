@@ -1,14 +1,15 @@
 import "../pages/Style/allEducators.css"
-
-
-
-function EducatorCards() {
-    
-    
+import {Link} from 'react-router-dom'
+const EducatorCards = ({ id,name, bio, subject, rate}) => {
   return (
-    <div className="educator-card">
-      This is the educator cards
+    <Link to={`/educator-profile/${id}`}>
+    <div className="educator-card" >
+      <p>{name}</p>
+      <p>{bio}</p>
+      <p>{subject}</p>
+      <p>{rate}</p>
     </div>
+    </Link>
   )
 }
 

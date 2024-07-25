@@ -1,11 +1,13 @@
-// import style from "./Style/Member.module.css"
-import Navbar from "../layout/Navbar"
+import style from "./Style/Member.module.css"
+import NavMember from "../layout/NavMember"
+import Account from "../components/Member/Account"
+
 
 function Member() {
   return (
-    <div>
-      <Navbar/>
-    
+    <div className={style.memberContainer}>
+      <NavMember/>
+      <Account/>
     </div>
   )
 }

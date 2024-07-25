@@ -35,17 +35,19 @@ const limiter = rateLimit({
 
 //similar to above, will do a cors one
 
+
+
 //CONFIGS features imported from online to be used in the whole project, aka using the things that you
 //imported
 dotenv.config()
 app.use(cookieParser());
 
-app.use(limiter)
-app.use(morgan('dev'))
+// app.use(limiter)
+app.use(morgan('dev'))  
 app.use(compression())
 app.use(helmet())
 app.use(cors({
-    origin: 'http://localhost:5173', 
+    origin: ['http://localhost:5173'], 
     credentials: true, // allow credentials (cookies)
     methods : ["POST", "GET", "PUT", "DELETE"]
   }));

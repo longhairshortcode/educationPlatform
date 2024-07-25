@@ -1,10 +1,8 @@
 import "./Style/dashboard.css";
-import {useForm} from 'react-hook-form'
+
+
 function EducatorProfile() {
-  const {setValue} = useForm()
-  const changeInput = () =>{
-    setValue("ousama")
-  }
+
   return (
     <div className="educator-profile">
       <div className="educator-card">

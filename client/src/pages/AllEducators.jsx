@@ -2,10 +2,12 @@ import "./Style/allEducators.css"
 import EducatorCards from "../components/EducatorCards"
 import axios from "axios"
 import {useQuery} from "react-query"
+import { useEffect, useState } from "react"
 
 async function getAllEducators(){
     try {
-        const result = await axios.get("http://localhost:5000/find/show-all-tutors")
+        const result = await axios.get("http://localhost:5000/find/show-all-educators")
+        console.log("data here ", result)
         return result.data
     } catch (error) {
         console.log("The problem is here: ", error)
@@ -14,9 +16,15 @@ async function getAllEducators(){
 
 
 function AllEducators() {
+  const [enabled, setEnabled] = useState(true)
   const { isPending, error, data } = useQuery({
     queryKey: ['allEducator'],
-    queryFn: getAllEducators
+    queryFn: getAllEducators,
+    enabled,
+  })
+
+  useEffect(()=>{
+    setEnabled(false);
   })
   
   if (isPending) return 'Loading...'
@@ -24,14 +32,23 @@ function AllEducators() {
   if (error) return 'An error has occurred: ' + error.message
   console.log("The tutors are showing: ", data)
   return (
-    <div className="all-educator-container">
-        <EducatorCards/>
-        <EducatorCards/>
-        <EducatorCards/>
-        <EducatorCards/>
+
+    <div className="all-educator-container" >
+       {data?.map((educator, index)=> (
+
+        <EducatorCards 
+        key={index}
+        name={educator.first_name}
+        bio={educator.bio}
+        subject={educator.subjects}
+        rate={educator.rate}
+        id={educator.id}
+        />)
+       )}
     </div>
-    
+   
   )
+    
 }
 
 export default AllEducators

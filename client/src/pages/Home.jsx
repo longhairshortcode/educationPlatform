@@ -7,7 +7,6 @@ function Home() {
     <div className={style.componentContainer}>
       <Navbar/>
       <Hero/>
-      <p className={style.sup}>hi</p>
     </div>
   )
 }

@@ -2,31 +2,29 @@ import pool from '../config/database.js';
 
 class Find{
 
-    static async showAllTutors (req, res, next) {
+    static async showAllEducators (req, res, next) {
         const q = "SELECT * FROM educator"
         try{
             const connection = await pool.getConnection()
-            const [result] = await connection.query(q)
-            res.status(200).json([result])
+            const result = await connection.query(q)
+            res.status(200).json(result[0])
         }catch(err){
             console.log('Problem while getting all educators: ', err)
-            
+            res.status(500).json({message : err})
         }
     }
 
-    static async searchAllTutors  (req, res, next)  {
+    static async searchAllEductors (req, res, next)  {
     
     } 
-     static async filterTutorsByRate   (req, res, next)  {
-    
-    } 
-     static async filterTutorsBySubject  (req, res, next)  {
+     
+     static async filterEducatorBySubject  (req, res, next)  {
     
     }
-     static async lterTutorsByClass (req, res, next)  {
+     static async filterEducatorByClass (req, res, next)  {
     
     }
-    static async lterTutorsByGrade  (req, res, next)  {
+    static async filterEducatorByGrade  (req, res, next)  {
     
     }
 }

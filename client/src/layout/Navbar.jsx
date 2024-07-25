@@ -16,7 +16,9 @@ function Navbar() {
         <p className={`${style.links} ${style.about}`}>About</p>
         <p className={`${style.links} ${style.tutoring}`}>Tutoring</p>
         <p className={`${style.links} ${style.classes}`}>Classes</p>
-        <p className={`${style.links} ${style.educators}`}>Educators</p>
+        <Link className={style.navLink} to="/all-educators">
+          <p className={`${style.links} ${style.educators}`}>Educators</p>
+        </Link>
         <p className={`${style.links} ${style.educators}`}>Pricing</p>
         <p className={`${style.links} ${style.educators}`}>Contact Us</p>
       </div>

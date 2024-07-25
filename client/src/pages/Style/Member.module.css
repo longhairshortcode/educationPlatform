@@ -1,0 +1,7 @@
+.memberContainer{
+    margin-top: 120px;
+    border: 2px solid red;
+    background-color: white;
+    height: calc(100vh - 120px);
+    box-sizing: border-box;
+}

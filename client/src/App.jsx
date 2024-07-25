@@ -1,3 +1,4 @@
+
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import EducatorLogin from "./pages/EducatorLogin.jsx";
@@ -10,6 +11,8 @@ import AllEducators from "./pages/AllEducators.jsx"
 
 
 function App() {
+
+
   return (
     <>
       <Routes>
@@ -21,7 +24,7 @@ function App() {
         {/* Add the new route */}
         <Route path="/sign-up" element={<Signup />} /> {/* Add the new route */}
         <Route path="/member" element={<Member />} /> {/* Add the new route */}
-        <Route path="/educator-profile" element={<EducatorProfile />} />{" "}
+        <Route path="/educator-profile/:id" element={<EducatorProfile />} />{" "}
         <Route path="/parent-profile" element={<ParentProfile />} />{" "}
 
         {/* Add the new route */}

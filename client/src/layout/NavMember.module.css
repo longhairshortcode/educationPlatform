@@ -3,7 +3,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    height: 60px;
+    height: 120px;
     z-index: 1000; 
     display: flex;
     justify-content: space-around;
@@ -20,6 +20,8 @@
     /* width: 200px; */
     /* height: 100px; */
     /* border: 2px solid red; */
+    display: flex;
+    align-items: center;
 }
 
 .circle1, .circle2 {
@@ -50,19 +52,28 @@
     margin-left: 40px;
     color: white;
     font-weight: bold;
+    align-self: center;
 }
 
 .linksContainer{
     /* border: 2px solid purple; */
     display: flex;
-    justify-content: center;
+    justify-content: right;
     gap: 50px;
     align-items: center;
     width: 800px;
     color: white;
+    text-decoration: none;
 }
 
-.links, .educators, .navLink{
+.linkContainer{
+    display: flex;
+    /* border: 2px solid blue; */
+    gap: 20px;
+    text-decoration: none;
+}
+
+.links, .messages, .myAccount, .navLink{
     font-size: 16px;
     cursor: pointer;
     text-decoration: none;
@@ -70,22 +81,21 @@
     
 }
 
-.signUpButtonContainer{
-    /* border: 2px solid blue; */
+
+.logOutButtonContainer{
+    /* border: 2px solid red; */
     display: flex;
     align-items: center;
+    gap: 25px;
    
 }
 
-.signUpButton{
+.logOutButton, .logOut{
     background-color:rgb(239, 185, 48);
     border-radius: 25px;
     font-weight: bold;
     font-size: 14px;
-
-}
-
-.createOne{
-    color: black;
     text-decoration: none;
+
 }
+
