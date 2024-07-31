@@ -7,7 +7,7 @@
     z-index: 1000; 
     display: flex;
     justify-content: space-around;
-    gap: 90px;
+    gap: 900px;
     /* justify-content: space-between; */
     background-color: rgb(73, 180, 180);
     border: 5px solid yellow;
@@ -65,7 +65,7 @@
 
 .dropdown{
     width: 500px;
-    height: 30px;
+    height: 40px;
     border: none;
     padding-left: 5px;
 }
@@ -106,7 +106,7 @@
 
 
 .logOutButtonContainer{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     display: flex;
     align-items: center;
     gap: 25px;

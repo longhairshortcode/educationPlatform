@@ -1,4 +1,8 @@
 import style from "./Account.module.css"
+import { BsEnvelopeHeart } from "react-icons/bs";
+import { BiHappyBeaming } from "react-icons/bi";
+import { IoPeopleCircleSharp } from "react-icons/io5";
+import { MdManageAccounts } from "react-icons/md";
 
 function Account() {
     return (
@@ -18,17 +22,19 @@ function Account() {
         </div>
         <div className={style.accountSubBox}>
             <div className={style.accountSubBoxLeft}>
-                <p className={`${style.paragraphs} ${style.manage}`}>MANAGE <br/> EDUCATOR ACCOUNT</p>
+                <p className={`${style.paragraphs} ${style.manage}`}>MANAGE <br/> EDUCATOR ACCOUNT <br/><MdManageAccounts className={style.black} /></p>
             </div>
             <div className={style.accountSubBoxRight}>
-                <p className={`${style.paragraphs} ${style.start}`}>START SESSION</p>
+                <p className={`${style.paragraphs} ${style.start}`}>START SESSION <br/><IoPeopleCircleSharp className={style.black} /></p>
             </div>
         </div>
         <div className={style.accountBox}>
-            <p className={style.paragraphs}>MESSAGES</p>
+            <p className={style.paragraphs}>MESSAGES <br/><BsEnvelopeHeart className={style.black}/></p>
+            
         </div>
         <div className={`${style.accountBox} ${style.reviewsBox}`}>
-            <p className={style.paragraphs}>REVIEWS</p>
+            <p className={style.paragraphs}>REVIEWS <br/><BiHappyBeaming className={style.black} /></p>
+
         </div>
       </div>
     );
