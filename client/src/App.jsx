@@ -8,10 +8,25 @@ import Member from "./pages/Member.jsx";
 import EducatorProfile from "./pages/EducatorProfile.jsx";
 import ParentProfile from "./pages/ParentProfile.jsx";
 import AllEducators from "./pages/AllEducators.jsx"
+import Reviews from "./pages/Reviews.jsx"
+import Messages from "./pages/Messages.jsx"
+import ManageEducator from "./pages/ManageEducator.jsx"
+import ManageParent from "./pages/ManageParent.jsx"
 
 
 function App() {
+  // Example state to track user login status and role
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userRole, setUserRole] = useState(null); // 'educator' or 'parent'
 
+  // Logic to determine which nav component to render
+  const renderNavbar = () => {
+    if (isLoggedIn) {
+      return <NavMember userRole={userRole} />;
+    } else {
+      return <Navbar />;
+    }
+  };
 
   return (
     <>
@@ -26,6 +41,10 @@ function App() {
         <Route path="/member" element={<Member />} /> {/* Add the new route */}
         <Route path="/educator-profile/:id" element={<EducatorProfile />} />{" "}
         <Route path="/parent-profile/:id" element={<ParentProfile />} />{" "}
+        <Route path="/reviews" element={<Reviews />} />{" "}
+        <Route path="/messages" element={<Messages />} />{" "}
+        <Route path="/manage-educator-account" element={<ManageEducator/>} />{" "}
+        <Route path="/manage-parent-account" element={<ManageParent/>} />{" "}
 
         {/* Add the new route */}
       </Routes>

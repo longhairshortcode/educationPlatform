@@ -1,6 +1,6 @@
 .accountContainer{
     /* border: 2px solid green; */
-    margin-top: 120px;
+    /* margin-top: 120px; */
     display: flex;
     flex-direction: column;
     width: 725px;
@@ -109,6 +109,7 @@
     height: fit-content;
     text-align: center;
     margin-top: 50px;
+    text-decoration: none;
 
   }
 

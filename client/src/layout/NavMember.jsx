@@ -26,7 +26,7 @@ function NavMember() {
 
       <div className={style.logOutButtonContainer}>
         <div className={style.linkContainer}>
-          <Link className={style.navLink} to="/">
+          <Link className={style.navLink} to="/messages">
             <p className={`${style.links} ${style.messages}`}>Messages</p>
           </Link>
           <Link className={style.navLink} to="/">
