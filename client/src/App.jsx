@@ -1,4 +1,4 @@
-import { Routes, Route, useLocation } from "react-router-dom";
+import { Routes, Route, useLocation, matchPath } from "react-router-dom";
 import Home from "./pages/Home.jsx";
 import EducatorLogin from "./pages/EducatorLogin.jsx";
 import ParentLogin from "./pages/ParentLogin.jsx";
@@ -22,12 +22,8 @@ function App() {
   const [userRole, setUserRole] = useState(null); // 'educator' or 'parent'
   const location = useLocation();
 
-  // Define paths that should render the navbar
-  const pathsWithNavbar = [
-    "/",
-    "/educator-login",
-    "/parent-login",
-    "/sign-up",
+  // Define paths that should render NavMember
+  const pathsWithNavMember = [
     "/account",
     "/educator-profile/:id",
     "/parent-profile/:id",
@@ -38,16 +34,15 @@ function App() {
     "/manage-parent-account",
   ];
 
-  // Check if the current path is one of the defined paths
+  // Logic to determine which nav component to render
   const renderNavbar = () => {
-    if (pathsWithNavbar.includes(location.pathname)) {
-      if (isLoggedIn) {
-        return <NavMember userRole={userRole} />;
-      } else {
-        return <Navbar />;
-      }
+    if (location.pathname === "/") {
+      return <Navbar />;
+    } else if (pathsWithNavMember.some(path => matchPath(path, location.pathname))) {
+      return <NavMember userRole={userRole} />;
+    } else {
+      return null; // No navbar for login/signup and error pages
     }
-    return null; // Don't render navbar for undefined paths
   };
 
   return (
