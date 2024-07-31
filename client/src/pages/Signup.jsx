@@ -219,11 +219,12 @@ function Signup() {
                 Have an account? <br/><span className={style.bold}>Educators</span> log in {" "}
                 <Link className={style.createOne} to={"/educator-login"}>
                   here. <br/>
+                </Link>
                   <span className={style.bold}>Parents</span> log in {" "}
                 <Link className={style.createOne} to={"/parent-login"}>
                   here.
                 </Link>
-                </Link>
+              
               </p>
               {/* <p className={style.message}>
                 <span className={style.bold}>Parents</span> log in {" "}
