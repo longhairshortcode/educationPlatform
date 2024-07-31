@@ -1,11 +1,11 @@
-import style from "./Account.module.css"
+import style from "./Style/Account.module.css"
 import { BsEnvelopeHeart } from "react-icons/bs";
 import { BiHappyBeaming } from "react-icons/bi";
 import { IoPeopleCircleSharp } from "react-icons/io5";
 import { MdManageAccounts } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-function Account() {
+function Member() {
     return (
       <div className={style.accountContainer}>
         <div className={style.dropdownContainerAndImage}>
@@ -41,4 +41,4 @@ function Account() {
     );
   }
   
-  export default Account;
+  export default Member;

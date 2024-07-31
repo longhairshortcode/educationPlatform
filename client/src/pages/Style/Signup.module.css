@@ -160,3 +160,10 @@ body, html {
 .parentWelcome{
     color:  rgb(208, 134, 243);
 }
+
+
+.bold{
+    color: darkblue;
+    font-weight: bold;
+    font-size: 16px;
+}

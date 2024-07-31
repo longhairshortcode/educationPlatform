@@ -38,9 +38,9 @@ function Signup() {
       const result = await axiosInstance.post("/auth/signup", data);
       console.log("Successfully signed up: ", result);
       if (result.status == 201 && data.role == "educator") {
-        navigate("/educator-profile");
+        navigate("/account");
       } else if (result.status == 201 && data.role == "parent") {
-        navigate("/parent-profile");
+        navigate("/account");
       }
     } catch (err) {
       console.log("Here is the problem: ", err);
@@ -216,11 +216,21 @@ function Signup() {
                 Join
               </button>
               <p className={style.message}>
-                Don't have an account? Create one{" "}
-                <Link className={style.createOne} to={"/sign-up"}>
+                Have an account? <br/><span className={style.bold}>Educators</span> log in {" "}
+                <Link className={style.createOne} to={"/educator-login"}>
+                  here. <br/>
+                  <span className={style.bold}>Parents</span> log in {" "}
+                <Link className={style.createOne} to={"/parent-login"}>
                   here.
                 </Link>
+                </Link>
               </p>
+              {/* <p className={style.message}>
+                <span className={style.bold}>Parents</span> log in {" "}
+                <Link className={style.createOne} to={"/parent-login"}>
+                  here.
+                </Link>
+              </p> */}
             </div>
           </form>
           <DevTool control={control} />

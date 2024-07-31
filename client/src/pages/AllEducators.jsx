@@ -3,7 +3,7 @@ import EducatorCards from "../components/EducatorCards"
 import axios from "axios"
 import {useQuery} from "react-query"
 import { useEffect, useState } from "react"
-import NavMember from "../layout/NavMember"
+// import NavMember from "../layout/NavMember"
 
 async function getAllEducators(){
     try {
@@ -35,7 +35,7 @@ function AllEducators() {
   
   return (
     <div className="all-educator-container" >
-      <NavMember/>
+      {/* <NavMember/> */}
       <div className="buttons-and-title">
         <div>Buttons</div>
         <h1>Educators who tutor in reading:</h1>

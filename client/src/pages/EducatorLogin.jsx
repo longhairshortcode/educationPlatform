@@ -18,7 +18,7 @@ function EducatorLogin() {
       const result = await axiosInstance.post("/auth/loginEducator", data);
       console.log("Successfully logged in: ", result);
       if (result.status === 200) {
-        navigate("/member");
+        navigate("/account");
       }
     } catch (err) {
       console.log("Here is the problem:", err);

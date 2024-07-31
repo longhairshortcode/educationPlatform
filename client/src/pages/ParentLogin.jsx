@@ -19,7 +19,7 @@ function ParentLogin() {
       const result = await axiosInstance.post("/auth/loginParent", data);
       console.log("Successfully logged in: ", result);
       if (result.status === 200) {
-        navigate("/parent-profile");
+        navigate("/account");
       }
     } catch (err) {
       console.log("Here is the problem:", err);
