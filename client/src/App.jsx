@@ -12,6 +12,8 @@ import Reviews from "./pages/Reviews.jsx"
 import Messages from "./pages/Messages.jsx"
 import ManageEducator from "./pages/ManageEducator.jsx"
 import ManageParent from "./pages/ManageParent.jsx"
+import Navbar from "./layout/Navbar.jsx"
+import { useState } from "react";
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <>
+    {renderNavbar()}
       <Routes>
         <Route path={"/"} element={<Home />} />
         <Route path="/educator-login" element={<EducatorLogin />} />{" "}

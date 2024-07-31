@@ -5,10 +5,10 @@
     /* top: 60px; */
     /* background-color: rgb(73, 180, 180); */
     background-color: white;
-    /* border: 5px hotpink solid; */
+    /* border: 6px hotpink solid; */
     width: 100vw;
-    margin-top: 44px;
-    height: calc(100vh - 70px); 
+    margin-top: 120px;
+    height: 100%; 
 }
 
 
@@ -18,7 +18,7 @@
     /* border: 10px darkblue solid; */
     background-color: rgb(73, 180, 180);
     height: 350px;
-    padding-bottom: 10px;;
+    /* padding-bottom: 10px; */
   }
 
 
@@ -27,13 +27,15 @@
     /* border: 2px solid white; */
     text-align: center;
     margin: 0;
-    padding-top: 20px;
+    padding-top: 0px;
+    font-size: 33px;
+    font-weight: 100;
 }
 
 .title{
     /* border: 2px solid black; */
     text-align: center;
-    font-size: 68px;
+    font-size: 80px;
     color: whitesmoke;
     font-weight: 400;
     margin: 0;
@@ -60,19 +62,20 @@
     /* border: 2px solid red; */
     /* font-weight: bold; */
     /* padding-top: 5px; */
-    margin-top: 15px;
+    margin-top: 45px;
     
 }
 
 .parentLoginButton, .educatorLoginButton{
     background-color: rgb(239, 185, 48);
     border-radius: 10px;
-    font-size: 11px;
+    font-size: 15px;
     font-weight: bold;
+    padding: 8px;
 }
 
 .subjectsContainer{
-    /* margin-top: 530px; */
+    margin-top: 0px;
     /* border: 4px red solid; */
     /* min-height: 260px; */
     height: 608px;
