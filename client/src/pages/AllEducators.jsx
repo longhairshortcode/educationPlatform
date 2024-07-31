@@ -3,6 +3,7 @@ import EducatorCards from "../components/EducatorCards"
 import axios from "axios"
 import {useQuery} from "react-query"
 import { useEffect, useState } from "react"
+import NavMember from "../layout/NavMember"
 
 async function getAllEducators(){
     try {
@@ -31,20 +32,32 @@ function AllEducators() {
   
   if (error) return 'An error has occurred: ' + error.message
   console.log("The tutors are showing: ", data)
+  
   return (
-
     <div className="all-educator-container" >
-       {data?.map((educator, index)=> (
-
-        <EducatorCards 
-        key={index}
-        name={educator.first_name}
-        bio={educator.bio}
-        subject={educator.subjects}
-        rate={educator.rate}
-        id={educator.id}
-        />)
-       )}
+      <NavMember/>
+      <div className="buttons-and-title">
+        <div>Buttons</div>
+        <h1>Educators who tutor in reading:</h1>
+      </div>
+      <div className="filter-and-cards">
+        <div className="filter-container">
+          hi
+        </div>
+        <div className="all-educator-cards">
+          {data?.map((educator, index)=> (
+            <EducatorCards
+            // className="card" 
+            key={index}
+            name={educator.first_name}
+            bio={educator.bio}
+            subject={educator.subjects}
+            rate={educator.rate}
+            id={educator.id}
+            />)
+          )}
+        </div>
+      </div>
     </div>
    
   )

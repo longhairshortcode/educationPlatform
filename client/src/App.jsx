@@ -25,7 +25,7 @@ function App() {
         <Route path="/sign-up" element={<Signup />} /> {/* Add the new route */}
         <Route path="/member" element={<Member />} /> {/* Add the new route */}
         <Route path="/educator-profile/:id" element={<EducatorProfile />} />{" "}
-        <Route path="/parent-profile" element={<ParentProfile />} />{" "}
+        <Route path="/parent-profile/:id" element={<ParentProfile />} />{" "}
 
         {/* Add the new route */}
       </Routes>
