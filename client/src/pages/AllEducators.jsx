@@ -1,5 +1,5 @@
 import "./Style/allEducators.css"
-import EducatorCards from "../components/EducatorCards"
+import EducatorCards from "../components/AllEducators/EducatorCards"
 import axios from "axios"
 import {useQuery} from "react-query"
 import { useEffect, useState } from "react"
@@ -35,41 +35,82 @@ function AllEducators() {
   
   return (
     <div className="all-educator-container" >
-      {/* <NavMember/> */}
+      
       <div className="buttons-and-title">
-        <div>Buttons</div>
-        <h1>Educators who tutor in reading:</h1>
+        <button className={`button tutoringButton`}>Tutoring</button>
+        <button className={`button classesButton`}>Classes</button>
+        <h1 className="title">Educators who tutor in reading:</h1>
       </div>
+      
       <div className="filter-and-cards">
-        <div className="filter-container">
-          hi
-        </div>
-        <div className="all-educator-cards">
-          {data?.map((educator, index)=> (
-            <EducatorCards
-            // className="card" 
-            key={index}
-            name={educator.first_name}
-            bio={educator.bio}
-            subject={educator.subjects}
-            rate={educator.rate}
-            id={educator.id}
-            />)
-          )}
-        </div>
+        
+          <div className="filter-box">
+            <div className="filter-group">
+              <label htmlFor="keywords">Keyword(s):</label>
+              <input type="text" id="keywords" name="keywords" />
+            </div>
+            <div className="filter-group">
+              <label htmlFor="subject">Subject:</label>
+              <select id="subject" name="subject">
+                <option value="">Select Subject</option>
+                {/* Add options here */}
+              </select>
+            </div>
+            <div className="filter-group">
+              <label htmlFor="class">Class:</label>
+              <select id="class" name="class">
+                <option value="">Select Class</option>
+                {/* Add options here */}
+              </select>
+            </div>
+            <div className="filter-group">
+              <label htmlFor="grade">Grade:</label>
+              <select id="grade" name="grade">
+                <option value="">Select Grade</option>
+                {/* Add options here */}
+              </select>
+            </div>
+            <div className="filter-group">
+              <label htmlFor="age">Age:</label>
+              <select id="age" name="age">
+                <option value="">Select Age</option>
+                {/* Add options here */}
+              </select>
+            </div>
+            <div className="filter-group">
+              <label htmlFor="payRate">Pay Rate:</label>
+              <select id="payRate" name="payRate">
+                <option value="">Select Pay Rate</option>
+                {/* Add options here */}
+              </select>
+            </div>
+            <div className="filter-group">
+              <label htmlFor="location">Location:</label>
+              <select id="location" name="location">
+                <option value="">Select Location</option>
+                {/* Add options here */}
+              </select>
+            </div>
+          </div>
+           
+          <div className="all-educator-cards">
+            {data?.map((educator, index)=> (
+              <EducatorCards
+              // className="card" 
+              key={index}
+              name={educator.first_name}
+              bio={educator.bio}
+              subject={educator.subjects}
+              rate={educator.rate}
+              id={educator.id}
+              />)
+            )}
+          </div>
       </div>
     </div>
-   
   )
     
 }
 
 export default AllEducators
 
-
-
-{/* <div className="custom-shape-divider-bottom-1721747438">
-      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
-        <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" className="shape-fill"></path>
-      </svg>
-    </div> */}

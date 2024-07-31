@@ -3,36 +3,65 @@ width: 100%;
 /* height: 100vh; */
 display: flex;
 flex-direction: column;
-
-border: 2px solid blue;
+border: 2px solid black;
 box-sizing: border-box;
 margin-top: 120px;
 background-color: white;
 }
+
+
+.buttons-and-title{
+    /* border: 4px solid red; */
+    padding-top: 20px;
+}
+.button{
+    background-color: rgb(62, 146, 164);
+    color: white;
+    padding: 7px 25px;
+    border-radius: 15px;
+    font-size: 18px;
+    font-weight: bold;
+    margin-left: 80px;
+}
+
+.title{
+    margin-left: 80px;
+}
+
+
+
+
 .filter-and-cards{
+    border: 10px solid green;
     display: flex;
 }
 
-.filter-container{
-    border: 5px solid orange;
+
+.filter-box{
+    border: 2px solid grey;
+    height: 800px;
     width: 30%;
-    height: 100vh;
+    /* margin-left: 80px; */
+    background-color: rgb(245, 245, 245);
 }
-.educator-card{
-height: 180px;
-width: 800px;
-border: 10px solid yellow;
-/* margin-right: 400px */
-}
+
 
 .all-educator-cards{
     display: flex;
     flex-direction: column;
     align-items: start;
     /* padding-left: 20px; */
-    border: 4px solid black;
+    border: 8px solid dodgerblue;
     width: 70%;
+    height: 100vh;
 }
+
+.educator-card{
+    height: 180px;
+    width: 800px;
+    border: 10px solid yellow;
+    /* margin-right: 400px */
+    }
 
 
 

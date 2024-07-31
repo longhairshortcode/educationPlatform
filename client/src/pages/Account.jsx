@@ -5,7 +5,7 @@ import { IoPeopleCircleSharp } from "react-icons/io5";
 import { MdManageAccounts } from "react-icons/md";
 import { Link } from "react-router-dom";
 
-function Member() {
+function Account() {
     return (
       <div className={style.accountContainer}>
         <div className={style.dropdownContainerAndImage}>
@@ -41,4 +41,4 @@ function Member() {
     );
   }
   
-  export default Member;
+  export default Account;
