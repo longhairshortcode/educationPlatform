@@ -8,8 +8,10 @@ function EducatorCards({ id, name, bio, subject, rate }) {
           <div className="top">
             <div className="name-stars">
               <p className="name">{name}</p>
-              <p className="stars">stars</p>
-              <p className="star-num">(10)</p>
+              <div className="stars-container">
+                <p className="stars">*****</p>
+                <p className="star-num">(10)</p>
+              </div>
             </div>
             <div className="job-location">
               <p>Elementary Teacher in CA, USA</p>
@@ -25,7 +27,7 @@ function EducatorCards({ id, name, bio, subject, rate }) {
         <div className="center-price-button">
           <div className="rate-container">
             <p className="from">from</p>
-            <p className="rate">{rate}</p>
+            <p className="rate">$20{rate}</p>
             <p className="per-hour">per hour</p>
           </div>
           <div className="contact-button-container">

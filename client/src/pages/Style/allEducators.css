@@ -1,12 +1,18 @@
 
 
 
+/* Ensure no other parent elements affect the card */
+.all-educator-cards a {
+    text-decoration: none; /* Remove underline from all links in the container */
+}
+
+
 .all-educator-container{
 width: 100%;
 /* height: 100vh; */
 display: flex;
 flex-direction: column;
-border: 2px solid black;
+/* border: 2px solid black; */
 box-sizing: border-box;
 margin-top: 120px;
 background-color: white;
@@ -20,7 +26,7 @@ background-color: white;
 }
 
 .button-container{
-    border: 2px solid red;
+    /* border: 2px solid red; */
     width: 360px;
     display: flex;
     justify-content: center;
@@ -45,13 +51,13 @@ background-color: white;
 
 
 .filter-and-cards{
-    border: 10px solid green;
+    /* border: 10px solid green; */
     display: flex;
 }
 
 
 .filter-box{
-    border: 2px solid grey;
+    border: 2px solid lightgray;
     height: 800px;
     width: 15%;
     margin-left: 80px;
@@ -97,39 +103,51 @@ background-color: white;
     flex-direction: column;
     align-items: start;
     /* padding-left: 20px; */
-    border: 8px solid dodgerblue;
+    /* border: 8px solid dodgerblue; */
     margin-left: 80px;
     width: 70%;
-    height: 100vh;
+    height: calc(100vh - 160px); /* Adjust this value to fit your layout */
+    overflow-y: auto; /* Enable vertical scrolling */
 }
 
-
+/* Hide scrollbar for Chrome, Safari, and Opera */
+.all-educator-cards::-webkit-scrollbar {
+    display: none;
+  }
 
 
 
 
 .educator-card{
     height: 180px;
-    width: 820px;
-    border: 1px solid yellow;
+    width: 900px;
+    /* border: 1px solid yellow; */
     background-color: rgb(217, 217, 217);
     /* margin-right: 400px */
     display: flex;
     flex-direction: row;
     padding: 20px;
+    margin-bottom: 10px; /* Add some space between the cards */
 
     }
 
     .left-text, .center-price-button, .right-image{
-        border: 3px solid red;
+        /* border: 3px solid red; */
         height: 150px;
     } 
+
+
+
+    /* left */
  
     .left-text{
-        width: 55%
+        width: 55%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
     }
 
-    .name-stars p, .job-location p, .bottom p {
+    .name-stars p, .job-location p, .bottom p, .rate-container p {
         margin: 0;
       }
 
@@ -141,12 +159,79 @@ background-color: white;
 
     .name-stars{
         display: flex;
+        border: 2px solid red;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    .name{
+        color: black;
+        font-weight: bold;
+        font-size: 30px;
+    }
+
+    .stars-container{
+        display: flex;
+        gap: 6px;
     }
     
+    
+
+
+     /* center    */
     .center-price-button{
-        width: 15%
+        width: 15%;
+        /* border: 2px solid red; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .from{
+        font-size: 12px;
+        color: black;
     }
     
+    .from, .rate, .per-hour {
+        line-height: .9; /* Set line height to reduce space between lines */
+    }
+
+    .rate-container{
+        /* border: 2px solid blue; */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5px;
+        
+    }
+
+    .rate{
+        font-size: 27px;
+        font-weight: bold;
+        color: black;
+    }
+
+    .per-hour{
+        font-size: 12px;
+        color: black;
+    }
+
+    .contact{
+        margin-top: 13px;
+        background-color: rgb(62, 146, 164);
+        color: white;
+        font-weight: bold;
+        padding: 8px;
+        border-radius: 6px;
+        border-color:  rgb(62, 146, 164);
+    }
+    
+
+
+
+
+
+    /* right */
     .right-image{
         width: 30%
     }

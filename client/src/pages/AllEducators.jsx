@@ -110,6 +110,7 @@ function AllEducators() {
               id={educator.id}
               />)
             )}
+          
           </div>
       </div>
     </div>
