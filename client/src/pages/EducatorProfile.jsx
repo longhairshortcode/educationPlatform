@@ -9,7 +9,7 @@ function EducatorProfile() {
   return (
     <div className="educator-profile">
       <div className="educator-card">
-        <p className="educator-card-name">{user.name || "Name Not Available"}</p>
+        <p className="educator-card-name">Educator {user.last_name || "Name Not Available"}</p>
         <div className="educator-card-img-container">
           <img className="educator-card-img"/>
         </div>
