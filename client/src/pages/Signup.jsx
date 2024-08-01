@@ -8,17 +8,15 @@ import axiosInstance from "../utils/axiosRequest.js";
 
 function Signup() {
   const navigate = useNavigate();
-  const form = useForm(
-    /*<FormValues>*/ {
-      defaultValues: {
-        firstName: "Batwoman",
-        lastName: "Learner",
-        email: "batwoman@email.com",
-        password: "",
-        confirmPassword: "",
-      },
-    }
-  );
+  const form = useForm({
+    defaultValues: {
+      first_name: "Batwoman",
+      last_name: "Learner",
+      email: "batwoman@email.com",
+      password: "",
+      confirmPassword: "",
+    },
+  });
   const { register, control, handleSubmit, formState, getValues } = form;
   const { errors } = formState;
   // const {name, ref, onChange, onBlur} = register("firstName")
@@ -37,9 +35,8 @@ function Signup() {
     try {
       const result = await axiosInstance.post("/auth/signup", data);
       console.log("Successfully signed up: ", result);
-      if (result.status == 201 && data.role == "educator") {
-        navigate("/account");
-      } else if (result.status == 201 && data.role == "parent") {
+      if (result.status == 201) {
+        setUserRole(data.role)
         navigate("/account");
       }
     } catch (err) {

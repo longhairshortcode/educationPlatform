@@ -101,9 +101,21 @@ class Educator {
         }
 
     
-    // static async getEducatorProfile  (req, res, next)  {
-    
-    // }
-}
+    static async getEducatorProfile  (req, res, next)  {
+        try {
+            const { userID } = req.params; // Use userID instead of tutorId
+            // Fetch the educator profile from the database
+            const educatorProfile = await EducatorModel.findById(userID); // Adjust based on your database model
+            
+            if (!educatorProfile) {
+              return res.status(404).json({ message: 'Educator not found' });
+            }
+      
+            res.status(200).json(educatorProfile);
+          } catch (error) {
+            res.status(500).json({ message: 'Server error', error });
+          }
+        }
+      };
 
 export default Educator

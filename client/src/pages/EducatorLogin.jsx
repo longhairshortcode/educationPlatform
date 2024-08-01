@@ -1,30 +1,55 @@
 import style from "./Style/EducatorLogin.module.css"
 import {DevTool} from "@hookform/devtools"
-// import parentImage from "../assets/parentLogin.webp"
 import teacher from "../assets/teacher.jpg"
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom"
 import axiosInstance from "../utils/axiosRequest"
+import { useContext } from "react";
+import { AuthContext } from "../App";
 
 function EducatorLogin() {
   const navigate = useNavigate();
   const form = useForm();
   const { register, control, handleSubmit, formState } = form;
+  const { user, setUser, setUserRole } = useContext(AuthContext); // Use AuthContext
   const {errors} = formState;
+
+  // const onSubmit = async (data) => {
+  //   console.log("Here is the data: ", data);
+  //   try {
+  //     const result = await axiosInstance.post("/auth/loginEducator", data);
+  //     console.log("Successfully logged in: ", result);
+  //     if (result.status === 200) {
+  //       navigate("/account");
+  //     }
+  //   } catch (err) {
+  //     console.log("Here is the problem:", err);
+  //   }
+  // };
+
 
   const onSubmit = async (data) => {
     console.log("Here is the data: ", data);
     try {
       const result = await axiosInstance.post("/auth/loginEducator", data);
       console.log("Successfully logged in: ", result);
+      console.log("API Response: ", result.data); // Add this line to check the API response
       if (result.status === 200) {
+        // Assuming the response contains user data, including id
+        setUser({
+          email: result.data.email,
+          first_name: result.data.first_name,
+          last_name: result.data.last_name,
+          id: result.data.id,
+        });
+        setUserRole('educator');
+        window.localStorage.setItem("currentUserLoggedIn", result.data.id);
         navigate("/account");
       }
     } catch (err) {
       console.log("Here is the problem:", err);
     }
   };
-
 
   return (
     <div className={style.componentContainer}>

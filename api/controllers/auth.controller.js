@@ -1,45 +1,56 @@
 //Way 2
 import bcrypt from 'bcrypt';
 import pool from '../config/database.js';
-import dotenv from 'dotenv';
+// import dotenv from 'dotenv';
 import jwt from 'jsonwebtoken'
 
 
 class Auth {
-  static async loginEducator (req, res) {
-    const {email, password} = req.body
-    
+  static async loginEducator(req, res) {
+    const { email, password } = req.body;
+  
     if (!email || !password) {
       return res.status(400).json({ message: 'Both fields are required' });
     }
-    console.log("the email of educator", email)
-    try{
-      const connection = await pool.getConnection()
-      const [resultEmail] = await connection.query('SELECT * FROM educator WHERE email = ? ', [email])
-      console.log("here is the result od educator ", resultEmail)
-      if (resultEmail[0].length == 0) {
-        return res.status(409).json({ message: "User doesn't exist, please sign up first." }); 
-    }
-    const user = resultEmail[0]
+  
+    try {
+      const connection = await pool.getConnection();
+      const [resultUserByEmail] = await connection.query('SELECT * FROM educator WHERE email = ?', [email]);
+      console.log("************Database result:", resultUserByEmail);
 
-    const isPasswordCorrect = await bcrypt.compare(password, user.password)
-    
-    if (!isPasswordCorrect){
-      return res.status(401).json({
-        message: "Password is incorrect, please try again."
-      })
-    }
-    
-    const token = jwt.sign({email}, process.env.JWT_KEY)  
-    
-    res.cookie('token', token, {
+      if (resultUserByEmail.length === 0) {
+        return res.status(409).json({ message: "User doesn't exist, please sign up first." });
+      }
+  
+      const user = resultUserByEmail[0];
+  
+      const isPasswordCorrect = await bcrypt.compare(password, user.password);
+  
+      if (!isPasswordCorrect) {
+        return res.status(401).json({ message: "Password is incorrect, please try again." });
+      }
+  
+      const token = jwt.sign({ email }, process.env.JWT_KEY);
+  
+      res.cookie('token', token, {
         httpOnly: true,
       });
-      res.status(200).json({ message: 'User logged in successfully' });
-  }catch(err){
-    console.error(err)
-    return res.status(500).json({ message: 'Internal Server Error', err });
-  }
+  
+      res.status(200).json({
+        message: 'User logged in successfully',
+        email: user.email,
+        first_name: user.first_name,
+        last_name: user.last_name,
+        // name: user.first_name + ' ' + user.last_name, 
+        // Combine first and last name
+        id: user.id
+      });
+      console.log("THIS IS first name: ", user.first_name)
+      console.log("THIS IS last name: ", user.last_name)
+    } catch (err) {
+      console.error(err);
+      return res.status(500).json({ message: 'Internal Server Error', err });
+    }
   }
   
 
@@ -95,6 +106,8 @@ class Auth {
     //
     try{
         const connection = await pool.getConnection()
+
+
         //check if user already exists
         if (role === "educator "){
           var resultEmail = await connection.query('SELECT email FROM educator WHERE email = ?', [email])
