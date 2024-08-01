@@ -37,59 +37,64 @@ function AllEducators() {
     <div className="all-educator-container" >
       
       <div className="buttons-and-title">
-        <button className={`button tutoringButton`}>Tutoring</button>
-        <button className={`button classesButton`}>Classes</button>
+        <div className="button-container">
+          <button className={`button tutoringButton`}>Tutoring</button>
+          <button className={`button classesButton`}>Classes</button>
+        </div>
         <h1 className="title">Educators who tutor in reading:</h1>
       </div>
       
       <div className="filter-and-cards">
         
           <div className="filter-box">
-            <div className="filter-group">
+            <div className={`filter-group keyword`}>
               <label htmlFor="keywords">Keyword(s):</label>
-              <input type="text" id="keywords" name="keywords" />
+              <input className="input" type="text" id="keywords" name="keywords" />
             </div>
             <div className="filter-group">
               <label htmlFor="subject">Subject:</label>
-              <select id="subject" name="subject">
+              <select  className="select" id="subject" name="subject">
                 <option value="">Select Subject</option>
                 {/* Add options here */}
               </select>
             </div>
             <div className="filter-group">
               <label htmlFor="class">Class:</label>
-              <select id="class" name="class">
+              <select  className="select" id="class" name="class">
                 <option value="">Select Class</option>
                 {/* Add options here */}
               </select>
             </div>
             <div className="filter-group">
               <label htmlFor="grade">Grade:</label>
-              <select id="grade" name="grade">
+              <select  className="select" id="grade" name="grade">
                 <option value="">Select Grade</option>
                 {/* Add options here */}
               </select>
             </div>
             <div className="filter-group">
               <label htmlFor="age">Age:</label>
-              <select id="age" name="age">
-                <option value="">Select Age</option>
+              <select  className="select" id="age" name="age">
+                <option  value="">Select Age</option>
                 {/* Add options here */}
               </select>
             </div>
             <div className="filter-group">
               <label htmlFor="payRate">Pay Rate:</label>
-              <select id="payRate" name="payRate">
-                <option value="">Select Pay Rate</option>
+              <select className="select"  id="payRate" name="payRate">
+                <option  value="">Select Pay Rate</option>
                 {/* Add options here */}
               </select>
             </div>
             <div className="filter-group">
               <label htmlFor="location">Location:</label>
-              <select id="location" name="location">
+              <select className="select" id="location" name="location">
                 <option value="">Select Location</option>
                 {/* Add options here */}
               </select>
+            </div>
+            <div className="filter-button-container">
+              <button className={`button filter-button`}>Filter</button>
             </div>
           </div>
            
