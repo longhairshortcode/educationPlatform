@@ -3,18 +3,38 @@ import { BsEnvelopeHeart } from "react-icons/bs";
 import { BiHappyBeaming } from "react-icons/bi";
 import { IoPeopleCircleSharp } from "react-icons/io5";
 import { MdManageAccounts } from "react-icons/md";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Account() {
+    const navigate = useNavigate();
+
+    function handleDropDownChange(e) {
+        const value = e.target.value;
+        if (value) {
+            navigate(value);
+        }
+
+    }
     return (
       <div className={style.accountContainer}>
         <div className={style.dropdownContainerAndImage}>
             <div className={style.dropdownContainer}>
                <h1 className={style.hello}>Hello, Ms. Shine</h1>
-               <select id="dropdown" name="options" className={style.dropdown}>
-                    <option value="" disabled selected hidden className={style.profileOptions}>PROFILE OPTIONS</option>
-                    <option value="editProfile" className={style.editProfile}>EDIT PROFILE</option>
-                    <option value="viewProfile" className={style.viewProfile}>VIEW PROFILE</option>
+               <select 
+                id="dropdown" 
+                name="options" 
+                className={style.dropdown}
+                onChange={handleDropDownChange}
+                >
+                    <option value="" disabled selected hidden className={style.profileOptions}>
+                        PROFILE OPTIONS
+                    </option>
+                    <option value="/edit-profile/:id" className={style.editProfile}>
+                        EDIT PROFILE
+                    </option>
+                    <option value="/view-profile/:id" className={style.viewProfile}>
+                        VIEW PROFILE
+                    </option>
                 </select>
             </div>
             <div className={style.profilePicContainer}>
