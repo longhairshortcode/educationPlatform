@@ -19,6 +19,7 @@ function AccountEducator() {
 
     }
 
+
     useEffect(()=>{
         console.log("This is user: ", user)
     }, [])
